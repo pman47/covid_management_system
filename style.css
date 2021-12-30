@@ -1,0 +1,58 @@
+:root {
+  --grain: #d7cec7;
+  --oxblood: #76323f;
+  --blackboard: #565656;
+  --tan: #c09f80;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", Times, serif;
+  transition: 0.3s;
+}
+
+.header {
+  overflow: hidden;
+  background-color: var(--grain);
+  padding: 20px 20px;
+}
+
+.header a {
+  float: left;
+  color: var(--blackboard);
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--oxblood);
+}
+
+.header a:hover {
+  background-color: var(--oxblood);
+  color: var(--tan);
+}
+
+.menu {
+  float: right;
+}
+
+#loginBtn {
+  font-weight: bold;
+  color: var(--oxblood);
+  margin-left: 20px;
+  border: 2px solid var(--oxblood);
+  border-radius: 50px;
+  padding: 10px 25px;
+}
+#loginBtn:hover {
+  background-color: var(--oxblood);
+  color: var(--grain);
+}
