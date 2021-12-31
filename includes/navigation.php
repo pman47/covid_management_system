@@ -5,6 +5,7 @@
     <a href="#">Vaccination</a>
     <a href="#">Testing</a>
     <a href="#">Vacancy of Beds</a>
-    <a href="registration.php" id="loginBtn">Login/Register</a>
+    <a href="login.php" id="loginBtn">Login</a>
+    <a href="registration.php" id="loginBtn">Register</a>
 </div>
 </div>
