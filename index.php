@@ -8,6 +8,7 @@
   <title>Covid Management System</title>
 </head>
 <body>
+  <!-- Header Start-->
   <div class="header">
     <a href="./" class="logo">CMS</a>
     <div class="menu">
@@ -18,10 +19,14 @@
       <a href="#" id="loginBtn">Login/Register</a>
     </div>
   </div>
+  <!-- Header End -->
+
+  <!-- Slider  Start -->
   <div class="slider">
     <input type="radio" name="slider" checked="checked">
     <div class="imgBox">
-      <img src="./images/vaccination1.jpg">
+      <img src="./images/vaccination.jpg">
+      <div class="gradColor"></div>
       <div class="content">
         <h2>Vaccination saves lives</h2>
         <p>Most COVID-19 vaccines require two doses.</p>
@@ -31,23 +36,32 @@
     </div>
     <input type="radio" name="slider">
     <div class="imgBox">
-      <img src="./images/leb1.jpg">
+      <img src="./images/leb.jpg">
+      <div class="gradColor"></div>
       <div class="content">
-        <h2>Slide Two</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iusto illo cumque cum repudiandae! Facere quis recusandae aliquam labore eum.</p>
-        <a href="#">Read more</a>
+        <h2>Laboratory Priority<br>Services Delivered</h2>
+        <p>Check out different Loboratories which provide different testing services around INDIA.</p>
+        <a href="#">View Testing Services</a>
       </div>
     </div>
     <input type="radio" name="slider">
     <div class="imgBox">
-      <img src="./images/beds1.jpg">
+      <img src="./images/bed.jpg">
+      <div class="gradColor"></div>
       <div class="content">
-        <h2>Slide Three</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iusto illo cumque cum repudiandae! Facere quis recusandae aliquam labore eum.</p>
-        <a href="#">Read more</a>
+        <h2>Looking for<br>Hospital beds?</h2>
+        <p>Check out different hospitals with available beds around INDIA.</p>
+        <a href="#">Checkout Availablity Of Beds</a>
       </div>
     </div>
-
   </div>
+  <!-- Slider  End -->
+
+  <!-- Footer Start -->
+  <div class="footer">
+    <p>Copyright &copy; Covid Management System 2022</p>
+    <a href="">Admin Login</a>
+  </div>
+  <!-- Footer End -->
 </body>
 </html>
