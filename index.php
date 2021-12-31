@@ -2,6 +2,11 @@
 <?php include('./includes/header.php'); ?>
 <!-- HEADER -->
 
+<!-- NAVIGATION -->
+<?php include('./includes/navigation.php'); ?>
+<!-- NAVIGATION -->
+
+
 <!-- Slider  Start -->
 <div class="slider">
   <input type="radio" name="slider" checked="checked">

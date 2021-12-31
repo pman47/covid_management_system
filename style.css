@@ -146,7 +146,7 @@
   visibility: hidden;
 }
 
-input[type="radio"]:after {
+.slider input[type="radio"]:after {
   width: 15px;
   height: 15px;
   border-radius: 15px;
@@ -160,7 +160,7 @@ input[type="radio"]:after {
   border: 2px solid white;
 }
 
-input[type="radio"]:checked:after {
+.slider input[type="radio"]:checked:after {
   width: 15px;
   height: 15px;
   border-radius: 15px;
@@ -195,4 +195,84 @@ input[type="radio"]:checked:after {
 .footer a:hover {
   background-color: var(--lite);
   color: var(--white);
+}
+
+/* Registration Page */
+form {
+  max-width: 600px;
+  margin: 150px auto;
+  padding: 10px 20px;
+  background: linear-gradient(var(--lite-dark), var(--extreme-lite));
+  border-radius: 8px;
+  color: var(--black);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--dark);
+}
+
+h1 {
+  margin: 30px 0px;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="file"],
+textarea,
+select {
+  border: none;
+  font-size: 20px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 94%;
+  background-color: var(--white);
+  color: var(--black);
+  box-shadow: 0 5px 2px rgba(0, 0, 0, 0.1) inset;
+  margin-bottom: 30px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0 4px 8px 0;
+}
+
+select {
+  padding: 6px;
+  height: 32px;
+  border-radius: 2px;
+}
+
+button {
+  padding: 19px 39px 18px 39px;
+  color: var(--white);
+  background-color: #4bc970;
+  font-size: 20px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+label.light {
+  display: inline;
 }
