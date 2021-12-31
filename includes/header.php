@@ -8,7 +8,8 @@
   <title>Covid Management System</title>
 </head>
 <body>
-  <!-- Header Start-->
+
+
   <div class="header">
     <a href="./" class="logo">CMS</a>
     <div class="menu">
@@ -19,4 +20,3 @@
       <a href="#" id="loginBtn">Login/Register</a>
     </div>
   </div>
-  <!-- Header End -->
