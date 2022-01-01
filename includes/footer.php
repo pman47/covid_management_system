@@ -2,7 +2,7 @@
 
   <div class="footer">
     <p>Copyright &copy; Covid Management System 2022</p>
-    <a href="">Admin Login</a>
+    <a href="login.php?user_role=admin">Admin Login</a>
   </div>
 
 
