@@ -67,7 +67,11 @@
 
 <form action="" method="post" style="margin:190px auto;">
     
-    <h1>Login Form</h1>
+    <?php if($_GET["user_role"] == 'admin'){
+        echo "<h1>Admin Login</h1>";
+    } else {
+        echo "<h1>Login</h1>";
+    } ?>
 
     <?php if($_GET["user_role"] == 'admin'){ ?>
     <label for="mobileNo">Username</label>

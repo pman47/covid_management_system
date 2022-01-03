@@ -29,20 +29,12 @@
     <div class="dropdown">
         <button class="dropbtn">Other</button>
         <div class="dropdown-content">
-            <a href="#">Manage Pincode</a>
+            <a href="pincode.php">Manage Pincode</a>
             <a href="#">Manage Age Group</a>
             <a href="#">Manage Time Slot</a>
         </div>
     </div>
 
-    <!-- <a href="#" class="dropbtn">Manage Vaccination Centre</a>
-    <div class="dropdown-content">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-    </div>
-    <a href="#">Manage Laboratory</a>
-    <a href="#">Manage Hospital</a> -->
     <a href="./includes/logout.php" id="logoutBtn">Logout</a>
 </div>
 </div>
