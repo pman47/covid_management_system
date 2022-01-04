@@ -1,0 +1,236 @@
+:root {
+  --white: #fff;
+  --dark: #2b6777;
+  --lite-dark: #c8d8e4;
+  --lite: #52ab98;
+  --extreme-lite: #f2f2f2;
+  --black: #000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", Times, serif;
+  transition: 0.3s;
+  font-size: 20px;
+}
+
+.menu {
+  float: right;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--dark);
+  border-radius: 5px;
+}
+
+.header {
+  overflow: hidden;
+  background-color: var(--extreme-lite);
+  padding: 20px 20px;
+}
+
+.header a {
+  float: left;
+  padding: 12px;
+  text-decoration: none;
+  line-height: 25px;
+}
+
+.header a:hover,
+.header .dropdown .dropbtn:hover {
+  background-color: var(--dark);
+  color: var(--lite-dark);
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  color: var(--black);
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 25px;
+  border-radius: 4px;
+  margin-left: 5px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--lite-dark);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 1111;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  margin: 0;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--lite);
+  color: var(--white);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#logoutBtn {
+  font-weight: bold;
+  color: var(--lite);
+  margin-left: 10px;
+  border: 2px solid var(--lite);
+  border-radius: 30px;
+  padding: 10px 25px;
+}
+
+#logoutBtn:hover {
+  background-color: var(--lite);
+  color: var(--white);
+}
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tableHeader {
+  min-width: 800px;
+  margin: 20px 0px;
+}
+
+.tableHeader .page-header {
+  font-size: 30px;
+}
+
+.tableHeader hr {
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="file"],
+textarea,
+select {
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  height: auto;
+  margin: 0;
+  padding: 5px;
+  width: auto;
+  background-color: var(--extreme-lite);
+  color: var(--black);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.Btn {
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: var(--lite);
+  color: var(--white);
+  cursor: pointer;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.tableBody {
+  width: 800px;
+  overflow-x: scroll;
+  padding: 0;
+}
+
+.tableFooter {
+  margin-top: 15px;
+  min-width: 800px;
+}
+
+.tableFooter hr {
+  margin-bottom: 10px;
+}
+
+.tableFooter form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tableFooter form div label {
+  margin-right: 10px;
+}
+
+.tableControls {
+  display: flex;
+  justify-content: space-between;
+}
+
+table {
+  width: 99%;
+  font-weight: normal;
+  border-collapse: collapse;
+  white-space: nowrap;
+  background-color: white;
+}
+
+table td,
+table th {
+  text-align: center;
+  padding: 8px 12px;
+}
+
+table td {
+  border-right: 1px solid var(--extreme-lite);
+}
+
+table thead th {
+  color: var(--white);
+  background: var(--lite);
+}
+
+table thead th:nth-child(odd) {
+  color: var(--white);
+  background: var(--dark);
+}
+
+table tr:nth-child(even) {
+  background: var(--extreme-lite);
+}
+
+.controlBtn {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.deleteBtn {
+  color: red;
+}

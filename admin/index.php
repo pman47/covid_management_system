@@ -5,3 +5,7 @@
 <!-- NAVIGATION -->
 <?php include('./includes/navigation.php'); ?>
 <!-- NAVIGATION -->
+
+<div class="hi">
+    Admin Index
+</div>
