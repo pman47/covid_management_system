@@ -120,18 +120,21 @@ ob_start();
                 while($row = mysqli_fetch_assoc($edit_district)){
                     $district_id = $row['district_id'];
                     $district_name = $row['district_name'];
-                    $state_id = $row['state_id'];
+                    $stateId = $row['state_id'];
                     ?>
 
                     <div>
                         <label for="cat-title">Edit District</label>
-                        <select name="stateId">
+                        <select name="stateId" value>
                             <?php
                                 $query = "SELECT * FROM state";
                                 $viewAllState = mysqli_query($connection,$query);
                                 while($row = mysqli_fetch_assoc($viewAllState)){
                                     $state_id = $row['state_id'];
                                     $state_name = $row['state_name'];
+                                    if($state_id == $stateId){
+                                        echo "<option value='$state_id' selected>$state_name</option>";
+                                    }else
                                     echo "<option value='$state_id'>$state_name</option>";
                                 }
                             ?>
