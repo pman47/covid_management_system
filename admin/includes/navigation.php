@@ -14,7 +14,7 @@
         <button class="dropbtn">Laboratory</button>
         <div class="dropdown-content">
             <a href="#">Manage Laboratories</a>
-            <a href="#">Manage Testing Types</a>
+            <a href="testingType.php">Manage Testing Types</a>
         </div>
     </div>
 
