@@ -48,7 +48,7 @@
         <h1 class="page-header">State</h1>
         <hr>
         <div class="tableControls">
-            <input type="text" placeholder="Search">
+            <!-- <input type="text" placeholder="Search"> -->
             <form action="" method="post">
                 <input type="text" name="stateName" placeholder="Enter State Name" required>
                 <button name="addState" class="Btn"><span>&#43;</span> Add</button>

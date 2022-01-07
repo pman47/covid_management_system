@@ -30,8 +30,8 @@
         <button class="dropbtn">Other</button>
         <div class="dropdown-content">
             <a href="pincode.php">Manage Pincode</a>
-            <a href="#">Manage Age Group</a>
-            <a href="#">Manage Time Slot</a>
+            <a href="ageGroup.php">Manage Age Group</a>
+            <a href="timeSlot.php">Manage Time Slot</a>
         </div>
     </div>
 

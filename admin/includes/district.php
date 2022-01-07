@@ -51,7 +51,7 @@ ob_start();
         <h1 class="page-header">District</h1>
         <hr>
         <div class="tableControls">
-            <input type="text" placeholder="Search">
+            <!-- <input type="text" placeholder="Search"> -->
             <form action="" method="post">
                 <select name="stateId">
                     <?php

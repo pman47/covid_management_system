@@ -5,3 +5,4 @@
 
 <?php include('./includes/state.php'); ?>
 <?php include('./includes/district.php'); ?>
+<?php include('./includes/pin.php'); ?>
