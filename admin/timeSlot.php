@@ -41,8 +41,8 @@
         <div class="tableControls">
             <!-- <input type="text" placeholder="Search"> -->
             <form action="" method="post">
-                <input type="time" name="from" placeholder="From" required>
-                <input type="time" name="to" placeholder="To" required>
+                <input type="time" name="from" required>
+                <input type="time" name="to" required>
                 <button name="addTimeSlot" class="Btn"><span>&#43;</span> Add</button>
             </form>
         </div>

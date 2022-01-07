@@ -92,8 +92,8 @@
 
                     <div>
                         <label for="cat-title">Edit Age Group</label>
-                        <input value="<?php if(isset($age_from)){echo $age_from;} ?>" type="number" name="age_from" min="0">
-                        <input value="<?php if(isset($age_to)){echo $age_to;} ?>" type="number" name="age_to" max="120">
+                        <input value="<?php if(isset($age_from)){echo $age_from;} ?>" type="number" name="age_from" min="0" required>
+                        <input value="<?php if(isset($age_to)){echo $age_to;} ?>" type="number" name="age_to" max="120" required>
                     </div>
                     <input type="submit" name="update_age_group" class="Btn" value="Update Age Group">
 

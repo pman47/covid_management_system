@@ -6,7 +6,7 @@
         <button class="dropbtn">Vaccination Centre</button>
         <div class="dropdown-content">
             <a href="#">Manage Vaccination Centres</a>
-            <a href="#">Manage Vaccines Types</a>
+            <a href="vaccineType.php">Manage Vaccines Types</a>
         </div>
     </div>
 
