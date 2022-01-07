@@ -22,7 +22,7 @@
         <button class="dropbtn">Hospital</button>
         <div class="dropdown-content">
             <a href="#">Manage Hospitals</a>
-            <a href="#">Manage Bed Types</a>
+            <a href="ward.php">Manage Wards</a>
         </div>
     </div>
 
