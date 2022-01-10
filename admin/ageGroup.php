@@ -7,7 +7,7 @@
     if(isset($_GET["ageGroupDelete"])){
         $age_group_id = $_GET["ageGroupDelete"];
         $query = "DELETE FROM age_group WHERE age_group_id = '{$age_group_id}'";
-        $deleteState = mysqli_query($connection,$query);
+        $deleteAgeGroup = mysqli_query($connection,$query);
         echo ("<script>location.href='ageGroup.php'</script>");
     }
 
@@ -16,9 +16,9 @@
         $age_to = $_POST["to"];
             
         $query = "INSERT INTO age_group(age_from,age_to) VALUES ('{$age_from}','{$age_to}')";
-        $addState = mysqli_query($connection,$query);
+        $addAgeGroup = mysqli_query($connection,$query);
         
-        if(!$addState){
+        if(!$addAgeGroup){
             die("QUERY FAILED " . mysqli_error($connection));
         }else{
             // echo '<script>

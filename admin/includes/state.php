@@ -116,7 +116,7 @@
                 if(!$update_query){
                     echo die("Update Query Failed" . mysqli_error($connection));
                 }
-                header("Location: pincode.php");
+                echo ("<script>location.href='pincode.php'</script>");
             }
             ?>
         </form>
