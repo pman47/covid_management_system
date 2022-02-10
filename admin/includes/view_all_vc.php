@@ -1,11 +1,19 @@
-
 <?php
-    if(isset($_GET["vcDelete"])){
-        $vc_id = $_GET["vcDelete"];
-        $query = "DELETE FROM vaccination_centres WHERE vc_id = '{$vc_id}'";
-        $deleteVc = mysqli_query($connection,$query);
-        confirm($deleteVc);
-        echo ("<script>alert('Vaccination Centre Deleted Successfully');</script>");
+    if(isset($_GET["vcOpen"])){
+        $vc_id = $_GET["vcOpen"];
+        $query = "UPDATE vaccination_centres SET vc_status = 'open' WHERE vc_id = {$vc_id}";
+        $OpenVc = mysqli_query($connection,$query);
+        confirm($OpenVc);
+        // echo ("<script>alert('Vaccination Centre Deleted Successfully');</script>");
+        echo ("<script>location.href='vc.php'</script>");
+    }
+
+    if(isset($_GET["vcClose"])){
+        $vc_id = $_GET["vcClose"];
+        $query = "UPDATE vaccination_centres SET vc_status = 'close' WHERE vc_id = {$vc_id}";
+        $CloseVc = mysqli_query($connection,$query);
+        confirm($CloseVc);
+        // echo ("<script>alert('Vaccination Centre Deleted Successfully');</script>");
         echo ("<script>location.href='vc.php'</script>");
     }
 ?>
@@ -30,9 +38,15 @@
                     $vc_cost_type = $row["vc_cost_type"];
                     $vc_age_group = $row["vc_age_group"];
                     $vc_pincode = $row["vc_pincode"];
+                    $vc_status = $row["vc_status"];
                     echo "<div class='card'>";
                         echo "<div class='first-child'>";
-                            echo "<div class='vcName'>$vc_name</div>";
+                            if($vc_status == 'close'){
+                                echo "<div class='vcName close'>$vc_name</div>";
+                            }
+                            else {
+                                echo "<div class='vcName open'>$vc_name</div>";
+                            }
                             echo "<div class='vcUsername'>username: $vc_username</div>";
                             echo "<div class='vcAddress'>address: $vc_address</div>";
                         echo "</div>";
@@ -47,7 +61,10 @@
                             echo "<div class='vcAgegroup'>age group: $age_group_from - $age_group_to</div>";
                             echo "<div class='vcCostType'>cost type: $vc_cost_type</div>";
                             echo "<div class='btnGrp'>";
-                                echo "<div><a class='dlt' onClick=\"javascript: return confirm('Are You Sure?');\" href='vc.php?vcDelete={$vc_id}'>DELETE</a></div>";
+                                if($vc_status == 'close')
+                                    echo "<div><a class='dlt open' onClick=\"javascript: return confirm('Are You Sure?');\" href='vc.php?vcOpen={$vc_id}'>OPEN</a></div>";
+                                else
+                                    echo "<div><a class='dlt close' onClick=\"javascript: return confirm('Are You Sure?');\" href='vc.php?vcClose={$vc_id}'>CLOSE</a></div>";
                                 echo "<div><a class='edit' href='vc.php?source=edit_vc&vc_id={$vc_id}'>EDIT</a></div>";
                             echo "</div>";
                         echo "</div>";

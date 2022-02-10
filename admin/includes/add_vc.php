@@ -9,8 +9,8 @@
         $vcCostType = $_POST["costType"];
         $vcAgeGroup = $_POST["ageGroup"];
 
-        $query = "INSERT INTO vaccination_centres (vc_username, vc_password, vc_name, vc_address, vc_cost_type, vc_pincode, vc_age_group) ";
-        $query .= "VALUES('{$vcUserName}','{$vcPassword}','{$vcName}','{$vcAddress}','{$vcCostType}','{$vcPincode}','{$vcAgeGroup}')";
+        $query = "INSERT INTO vaccination_centres (vc_username, vc_password, vc_name, vc_address, vc_cost_type, vc_pincode, vc_age_group, vc_status) ";
+        $query .= "VALUES('{$vcUserName}','{$vcPassword}','{$vcName}','{$vcAddress}','{$vcCostType}','{$vcPincode}','{$vcAgeGroup}','open')";
 
         $addVc = mysqli_query($connection,$query);
         if(!$addVc){
@@ -40,6 +40,7 @@
             document.getElementById('submit').disabled = true;
         }
     }
+
     function Hi(){
         console.log("Hi");
     }

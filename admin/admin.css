@@ -379,7 +379,11 @@ table tr:nth-child(even) {
   background-color: var(--lite);
 }
 
-.second-child .btnGrp .dlt {
+.second-child .btnGrp .dlt.close {
+  background-color: var(--lite);
+}
+
+.second-child .btnGrp .dlt.open {
   background-color: #ff7272;
 }
 
@@ -388,4 +392,12 @@ table tr:nth-child(even) {
   font-size: 30px;
   color: var(--lite);
   font-weight: bold;
+}
+
+.card .first-child .vcName.open {
+  color: var(--lite);
+}
+
+.card .first-child .vcName.close {
+  color: #ff7272;
 }
