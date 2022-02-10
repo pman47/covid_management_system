@@ -8,7 +8,7 @@
         $stateId = $_GET["stateDelete"];
         $query = "DELETE FROM state WHERE state_id = '{$stateId}'";
         $deleteState = mysqli_query($connection,$query);
-        header("Location: pincode.php");
+        header("Location: state.php");
     }
 
     if(isset($_POST["addState"])){
@@ -120,7 +120,7 @@
                 if(!$update_query){
                     echo die("Update Query Failed" . mysqli_error($connection));
                 }
-                echo ("<script>location.href='pincode.php'</script>");
+                echo ("<script>location.href='state.php'</script>");
             }
             ?>
         </form>

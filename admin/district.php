@@ -9,7 +9,7 @@ ob_start();
         $districtId = $_GET["districtDelete"];
         $query = "DELETE FROM district WHERE district_id = '{$districtId}'";
         $deleteDistrict = mysqli_query($connection,$query);
-        header("Location: pincode.php");
+        header("Location: district.php");
     }
 
     if(isset($_POST["addDistrict"])){
@@ -162,7 +162,7 @@ ob_start();
                 if(!$update_query){
                     echo die("Update Query Failed" . mysqli_error($connection));
                 }
-                header("Location: pincode.php");
+                header("Location: district.php");
             }
             ?>
         </form>
