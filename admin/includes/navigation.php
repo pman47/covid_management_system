@@ -29,6 +29,8 @@
     <div class="dropdown">
         <button class="dropbtn">Other</button>
         <div class="dropdown-content">
+            <a href="state.php">Manage State</a>
+            <a href="district.php">Manage District</a>
             <a href="pincode.php">Manage Pincode</a>
             <a href="ageGroup.php">Manage Age Group</a>
             <a href="timeSlot.php">Manage Time Slot</a>

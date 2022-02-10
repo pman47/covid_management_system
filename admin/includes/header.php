@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="admin.css">
   <title>CMS - Admin Panel</title>
+
+  <script src="../jquery.min.js"></script>
+
 </head>
 <body>
 <?php
@@ -14,6 +17,6 @@ if($_SESSION['user_role'] != "admin"){
   echo '<script>
     alert("Unauthorized Access");
     window.location.href="../index.php";
-  </script>';
+  </scrip>';
 }
 ?>
