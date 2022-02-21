@@ -13,7 +13,7 @@
     <div class="dropdown">
         <button class="dropbtn">Laboratory</button>
         <div class="dropdown-content">
-            <a href="#">Manage Laboratories</a>
+            <a href="laboratory.php">Manage Laboratories</a>
             <a href="testingType.php">Manage Testing Types</a>
         </div>
     </div>

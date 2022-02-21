@@ -27,7 +27,7 @@
                 $connection;
                 die("QUERY FAILED " . mysqli_error($connection));
             }else{
-                echo "<script>alert('Vaccination Centre Added Successfully.')</script>";
+                echo "<script>alert('Vaccination Centre Updated Successfully.')</script>";
                 echo "<script>location.href='vc.php'</script>";
             }
         }
