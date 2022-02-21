@@ -21,7 +21,7 @@
     <div class="dropdown">
         <button class="dropbtn">Hospital</button>
         <div class="dropdown-content">
-            <a href="#">Manage Hospitals</a>
+            <a href="hospital.php">Manage Hospitals</a>
             <a href="ward.php">Manage Wards</a>
         </div>
     </div>

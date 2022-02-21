@@ -1,24 +1,24 @@
 
 <?php
     if(isset($_POST["submit"])){
-        $labName = $_POST["name"];
-        $labUserName = $_POST["username"];
-        $labPassword = $_POST["password"];
-        $labAddress = $_POST["address"];
-        $labPincode = $_POST["pincode"];
-        $labContact = $_POST["mobileNo"];
+        $hospitalName = $_POST["name"];
+        $hospitalUserName = $_POST["username"];
+        $hospitalPassword = $_POST["password"];
+        $hospitalAddress = $_POST["address"];
+        $hospitalPincode = $_POST["pincode"];
+        $hospitalContact = $_POST["mobileNo"];
         // $vcAgeGroup = $_POST["ageGroup"];
 
-        $query = "INSERT INTO laboratories (lab_username, lab_password, lab_name, lab_address, lab_pincode, contact_no, lab_status) ";
-        $query .= "VALUES('{$labUserName}','{$labPassword}','{$labName}','{$labAddress}','{$labPincode}','{$labContact}','open')";
-        $addLab = mysqli_query($connection,$query);
+        $query = "INSERT INTO hospitals (hospital_username, hospital_password, hospital_name, hospital_address, hospital_pincode, contact_no, hospital_status) ";
+        $query .= "VALUES('{$hospitalUserName}','{$hospitalPassword}','{$hospitalName}','{$hospitalAddress}','{$hospitalPincode}','{$hospitalContact}','open')";
+        $addHospital = mysqli_query($connection,$query);
 
-        if(!$addLab){
+        if(!$addHospital){
             $connection;
             die("QUERY FAILED " . mysqli_error($connection));
         }else{
-            echo "<script>alert('Laboratory Added Successfully.')</script>";
-            echo "<script>location.href='laboratory.php'</script>";
+            echo "<script>alert('Hospital Added Successfully.')</script>";
+            echo "<script>location.href='hospital.php'</script>";
         }
     }
 ?>
@@ -48,9 +48,9 @@
 
 <form action="" method="post" enctype="multipart/form-data" class="cmdForm">
     
-    <h1>Add Laboratory</h1>
+    <h1>Add Hospital</h1>
 
-    <label for="name">Laboratory Name</label>
+    <label for="name">Hospital Name</label>
     <input type="text" name="name" id="name" required><br>
     
     <label for="username">Username</label>
