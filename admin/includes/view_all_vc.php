@@ -36,7 +36,7 @@
                     $vc_username = $row["vc_username"];
                     $vc_address = $row["vc_address"];
                     $vc_cost_type = $row["vc_cost_type"];
-                    $vc_age_group = $row["vc_age_group"];
+                    // $vc_age_group = $row["vc_age_group"];
                     $vc_pincode = $row["vc_pincode"];
                     $vc_status = $row["vc_status"];
                     echo "<div class='card'>";
@@ -52,13 +52,22 @@
                         echo "</div>";
                         echo "<div class='second-child'>";
                             echo "<div class='vcPincode'>pincode: $vc_pincode</div>";
-                            $query = "SELECT * FROM age_group WHERE age_group_id = '{$vc_age_group}'";
+                            echo "<div class='vcAgegroup'>age group:-- ";
+                            $query = "SELECT * FROM vc_age_group WHERE vc_id = '{$vc_id}' ORDER BY age_group_id";
                             $view_age_group = mysqli_query($connection,$query);
                             while($row=mysqli_fetch_assoc($view_age_group)){
-                                $age_group_from = $row["age_from"];
-                                $age_group_to = $row["age_to"];
+                                $age_group_id = $row["age_group_id"];
+
+                                $query = "SELECT * FROM age_group WHERE age_group_id = '{$age_group_id}'";
+                                $view_all_age_group = mysqli_query($connection,$query);
+                                while($age_groups=mysqli_fetch_assoc($view_all_age_group)){
+                                    $age_from = $age_groups["age_from"];
+                                    $age_to = $age_groups["age_to"];
+                                }
+                                echo "<div>$age_from - $age_to</div>";
+
                             }
-                            echo "<div class='vcAgegroup'>age group: $age_group_from - $age_group_to</div>";
+                            echo "</div>";
                             echo "<div class='vcCostType'>cost type: $vc_cost_type</div>";
                             echo "<div class='btnGrp'>";
                                 if($vc_status == 'close')

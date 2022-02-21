@@ -352,7 +352,7 @@ table tr:nth-child(even) {
 
 .card div {
   margin: 0px 30px;
-  width: 50%;
+  width: 95%;
 }
 
 .card .first-child .vcName .card .second-child {
@@ -400,4 +400,9 @@ table tr:nth-child(even) {
 
 .card .first-child .vcName.close {
   color: #ff7272;
+}
+
+.vcAgegroup div {
+  margin-left: 5px;
+  display: inline;
 }

@@ -11,7 +11,25 @@
         $query = "UPDATE vaccination_centres SET vc_name = '{$updateVcName}',vc_username = '{$updateVcUsername}',vc_address = '{$updateVcAddress}',vc_pincode = '{$updateVcPincode}',vc_cost_type = '{$updateVcCostType}',vc_age_group = '{$updateVcAgeGroup}' WHERE vc_id = {$vc_id}";
         $update_query = mysqli_query($connection,$query);
         if(!$update_query){
-            echo die("Update Query Failed" . mysqli_error($connection));
+            $connection;
+            die("QUERY FAILED " . mysqli_error($connection));
+        }else{
+            if(isset($_POST["ageGroup"]))
+            {
+                foreach ($_POST['ageGroup'] as $ageGroup){
+                    $query = "INSERT INTO vc_age_group (vc_id, age_group_id) ";
+                    $query .= "VALUES('{$vc_id}','{$ageGroup}')";
+                    $addAgeGroup = mysqli_query($connection,$query);
+                }
+            }
+
+            if(!$addAgeGroup){
+                $connection;
+                die("QUERY FAILED " . mysqli_error($connection));
+            }else{
+                echo "<script>alert('Vaccination Centre Added Successfully.')</script>";
+                echo "<script>location.href='vc.php'</script>";
+            }
         }
         header("Location: vc.php");
     }
@@ -27,7 +45,7 @@ if(isset($_GET["vc_id"])){
         $vc_username = $row["vc_username"];
         $vc_address = $row["vc_address"];
         $vc_cost_type = $row["vc_cost_type"];
-        $vc_age_group = $row["vc_age_group"];
+        // $vc_age_group = $row["vc_age_group"];
         $vc_pincode = $row["vc_pincode"];
     }
 ?>
@@ -60,20 +78,44 @@ if(isset($_GET["vc_id"])){
     </select>
 
     <label for="ageGroup">Age Group</label>
-    <select name="ageGroup" id="ageGroup" required>
-        <option value="none">--- Select Age Group ---</option>
+    <select name="ageGroup[]" id="ageGroup" required>
         <?php
+
             $query = "SELECT * FROM age_group";
-            $viewAllAgeGroup = mysqli_query($connection,$query);
-            while($row = mysqli_fetch_assoc($viewAllAgeGroup)){
+            $getAllAgeGroups = mysqli_query($connection,$query);
+            while($row = mysqli_fetch_assoc($getAllAgeGroups)){
                 $age_group_id = $row['age_group_id'];
                 $age_from = $row['age_from'];
                 $age_to = $row['age_to'];
-                if($age_group_id == $vc_age_group)
-                echo "<option value='$age_group_id' selected>$age_from - $age_to</option>";
-                else
-                echo "<option value='$age_group_id'>$age_from - $age_to</option>";
+
+                $query1 = "SELECT * FROM vc_age_group WHERE vc_id = '$vc_id' AND age_group_id = '$age_group_id'";
+                $check = mysqli_query($connection,$query1);
+                if($check>0){
+                    echo "<option value='$age_group_id' selected>$age_from - $age_to</option>";
+                }else{
+                    echo "<option value='$age_group_id'>$age_from - $age_to</option>";
+                }
+
+
+
             }
+
+
+            // $query = "SELECT * FROM vc_age_group WHERE vc_id = '$vc_id'";
+            // $viewAllAgeGroup = mysqli_query($connection,$query);
+            // while($row = mysqli_fetch_assoc($viewAllAgeGroup)){
+            //     $age_group_id = $row['age_group_id'];
+            //     $query = "SELECT * FROM age_group WHERE age_group_id = $age_group_id";
+            //     $getAgeGroup = mysqli_query($connection,$query);
+            //     while($col = mysqli_fetch_assoc($getAgeGroup)){
+            //         $age_from = $col['age_from'];
+            //         $age_to = $col['age_to'];
+            //     }
+            //     // if($age_group_id == $vc_age_group)
+            //     // echo "<option value='$age_group_id' selected>$age_from - $age_to</option>";
+            //     // else
+            //     echo "<option value='$age_group_id'>$age_from - $age_to</option>";
+            // }
         ?>
     </select>
 

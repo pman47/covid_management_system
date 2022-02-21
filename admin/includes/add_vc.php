@@ -7,18 +7,38 @@
         $vcAddress = $_POST["address"];
         $vcPincode = $_POST["pincode"];
         $vcCostType = $_POST["costType"];
-        $vcAgeGroup = $_POST["ageGroup"];
+        // $vcAgeGroup = $_POST["ageGroup"];
 
-        $query = "INSERT INTO vaccination_centres (vc_username, vc_password, vc_name, vc_address, vc_cost_type, vc_pincode, vc_age_group, vc_status) ";
-        $query .= "VALUES('{$vcUserName}','{$vcPassword}','{$vcName}','{$vcAddress}','{$vcCostType}','{$vcPincode}','{$vcAgeGroup}','open')";
-
+        $query = "INSERT INTO vaccination_centres (vc_username, vc_password, vc_name, vc_address, vc_cost_type, vc_pincode, vc_status) ";
+        $query .= "VALUES('{$vcUserName}','{$vcPassword}','{$vcName}','{$vcAddress}','{$vcCostType}','{$vcPincode}','open')";
         $addVc = mysqli_query($connection,$query);
+
         if(!$addVc){
             $connection;
             die("QUERY FAILED " . mysqli_error($connection));
         }else{
-            echo "<script>alert('Vaccination Centre Added Successfully.')</script>";
-            echo "<script>location.href='vc.php'</script>";
+            if(isset($_POST["ageGroup"]))
+            {
+                $query = "Select * from vaccination_centres WHERE vc_username = '{$vcUserName}'";
+                $getVcId = mysqli_query($connection,$query);
+                while($row = mysqli_fetch_assoc($getVcId)){
+                    $vc_id = $row['vc_id'];
+                }
+
+                foreach ($_POST['ageGroup'] as $ageGroup){
+                    $query = "INSERT INTO vc_age_group (vc_id, age_group_id) ";
+                    $query .= "VALUES('{$vc_id}','{$ageGroup}')";
+                    $addAgeGroup = mysqli_query($connection,$query);
+                }
+            }
+
+            if(!$addAgeGroup){
+                $connection;
+                die("QUERY FAILED " . mysqli_error($connection));
+            }else{
+                echo "<script>alert('Vaccination Centre Added Successfully.')</script>";
+                echo "<script>location.href='vc.php'</script>";
+            }
         }
     }
 ?>
@@ -75,8 +95,7 @@
     </select>
 
     <label for="ageGroup">Age Group</label>
-    <select name="ageGroup" id="ageGroup" required>
-        <option value="none">--- Select Age Group ---</option>
+    <select name="ageGroup[]" id="ageGroup" required multiple size = 6>
         <?php
             $query = "SELECT * FROM age_group";
             $viewAllAgeGroup = mysqli_query($connection,$query);
