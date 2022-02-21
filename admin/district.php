@@ -104,8 +104,8 @@ ob_start();
                         echo "<td>{$state_name}</td>";
                     }
 
-                    echo "<td><a class='deleteBtn controlBtn' onClick=\"javascript: return confirm('Are You Sure?');\" href='pincode.php?districtDelete={$district_id}'>DELETE</a></td>";
-                    echo "<td><a class='editBtn controlBtn' href='pincode.php?districtEdit={$district_id}'>EDIT</a></td>";
+                    echo "<td><a class='deleteBtn controlBtn' onClick=\"javascript: return confirm('Are You Sure?');\" href='district.php?districtDelete={$district_id}'>DELETE</a></td>";
+                    echo "<td><a class='editBtn controlBtn' href='district.php?districtEdit={$district_id}'>EDIT</a></td>";
                     echo "</tr>";
                 }
                 ?>

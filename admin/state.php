@@ -79,8 +79,8 @@
                     echo "<tr>";
                     echo "<td>{$state_id}</td>";
                     echo "<td>{$state_name}</td>";
-                    echo "<td><a class='deleteBtn controlBtn' onClick=\"javascript: return confirm('Are You Sure?');\" href='pincode.php?stateDelete={$state_id}'>DELETE</a></td>";
-                    echo "<td><a class='editBtn controlBtn' href='pincode.php?stateEdit={$state_id}'>EDIT</a></td>";
+                    echo "<td><a class='deleteBtn controlBtn' onClick=\"javascript: return confirm('Are You Sure?');\" href='state.php?stateDelete={$state_id}'>DELETE</a></td>";
+                    echo "<td><a class='editBtn controlBtn' href='state.php?stateEdit={$state_id}'>EDIT</a></td>";
                     echo "</tr>";
                 }
                 ?>
