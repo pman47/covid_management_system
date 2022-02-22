@@ -8,7 +8,7 @@
         $updateVcPincode = $_POST['pincode'];
         $updateVcCostType = $_POST['costType'];
         $updateVcAgeGroup = $_POST['ageGroup'];
-        $query = "UPDATE vaccination_centres SET vc_name = '{$updateVcName}',vc_username = '{$updateVcUsername}',vc_address = '{$updateVcAddress}',vc_pincode = '{$updateVcPincode}',vc_cost_type = '{$updateVcCostType}',vc_age_group = '{$updateVcAgeGroup}' WHERE vc_id = {$vc_id}";
+        $query = "UPDATE vaccination_centres SET vc_name = '{$updateVcName}',vc_username = '{$updateVcUsername}',vc_address = '{$updateVcAddress}',vc_pincode = '{$updateVcPincode}',vc_cost_type = '{$updateVcCostType}' WHERE vc_id = {$vc_id}";
         $update_query = mysqli_query($connection,$query);
         if(!$update_query){
             $connection;
@@ -64,7 +64,22 @@ if(isset($_GET["vc_id"])){
     <textarea min="10" max="200" name="address" required> <?php if(isset($vc_address)){echo $vc_address;} ?> </textarea>
     
     <label for="pincode">Pincode</label>
-    <input type="text" name="pincode" id="pincode" pattern="[1-9]{1}[0-9]{5}" value="<?php if(isset($vc_pincode)){echo $vc_pincode;} ?>" maxlength="6" required>
+    <!-- <input type="text" name="pincode" id="pincode" pattern="[1-9]{1}[0-9]{5}" value="<?php if(isset($vc_pincode)){echo $vc_pincode;} ?>" maxlength="6" required> -->
+    <select name="pincode" class="pincodeTag" id="pincode" placeholder="Select Your Favorite">
+        <option value="0">-- Select Pincode --</option>
+        <?php
+            $query = "SELECT pincode.pincode, pincode.area_name, district.district_name FROM pincode INNER JOIN district ON pincode.district_id = district.district_id";
+            $getValues = mysqli_query($connection,$query);
+            while($row = mysqli_fetch_assoc($getValues)){
+                $pincode = $row['pincode'];
+                $area_name = $row['area_name'];
+                $district_name = $row['district_name'];
+                echo "<option value='$pincode'";
+                if($pincode==$vc_pincode) echo "selected";
+                echo "> $pincode    | $area_name,$district_name </option>";
+            }
+        ?>
+    </select>
 
     <label for="costType">Cost Type</label>
     <select name="costType" id="costType" required>
@@ -124,3 +139,10 @@ if(isset($_GET["vc_id"])){
 <?php
     }
 ?>
+
+
+<script>
+    $(document).ready(function(){
+        $("#pincode").select2();
+    });
+</script>

@@ -86,7 +86,20 @@
     <textarea min="10" max="200" name="address" required> </textarea>
     
     <label for="pincode">Pincode</label>
-    <input type="text" name="pincode" id="pincode" pattern="[1-9]{1}[0-9]{5}" maxlength="6" required>
+    <!-- <input type="text" name="pincode" id="pincode" pattern="[1-9]{1}[0-9]{5}" maxlength="6" required> -->
+    <select name="pincode" class="pincodeTag" id="pincode" placeholder="Select Your Favorite">
+        <option value="0">-- Select Pincode --</option>
+        <?php
+            $query = "SELECT pincode.pincode, pincode.area_name, district.district_name FROM pincode INNER JOIN district ON pincode.district_id = district.district_id";
+            $getValues = mysqli_query($connection,$query);
+            while($row = mysqli_fetch_assoc($getValues)){
+                $pincode = $row['pincode'];
+                $area_name = $row['area_name'];
+                $district_name = $row['district_name'];
+                echo "<option value='$pincode'> $pincode    | $area_name,$district_name </option>";
+            }
+        ?>
+    </select>
 
     <label for="costType">Cost Type</label>
     <select name="costType" id="costType" required>
@@ -113,3 +126,8 @@
 
 <!-- <label for="mobileNo">Contact No</label>
     <input type="tel" name="mobileNo" id="mobileNo" pattern="[1-9]{1}[0-9]{9}" required> -->
+<script>
+    $(document).ready(function(){
+        $("#pincode").select2();
+    });
+</script>
