@@ -218,7 +218,7 @@ $(document).ready(function() {
                                 ?>
                             </select>
                             <input type="text" name="areaName" value="<?php if(isset($area_name)) echo $area_name;?>" placeholder="Enter Area Name" required>
-                            <button name="addArea" class="Btn"><span>&#43;</span> Add</button>
+                            <button name="update_pincode" class="Btn">UPDATE</button>
                         </form>
                     </div>
 
@@ -226,14 +226,17 @@ $(document).ready(function() {
 
             <?php
             // UPDATE Category
-            if(isset($_POST['update_state'])){
-                $update_state_name = $_POST['state_name'];
-                $query = "UPDATE state SET state_name = '{$update_state_name}' WHERE state_id = {$stateId}";
+            if(isset($_POST['updatePincode'])){
+                $update_pincode = $_POST['updatePincode'];
+                $update_area_name = $_POST['areaName'];
+                $update_district_id = $_POST['updateDistrictId'];
+
+                $query = "UPDATE pincode SET pincode = '{$update_pincode}', area_name = '{$update_area_name}', district_id = '{$update_district_id}' WHERE pincode = {$pincode}";
                 $update_query = mysqli_query($connection,$query);
                 if(!$update_query){
                     echo die("Update Query Failed" . mysqli_error($connection));
                 }
-                echo ("<script>location.href='state.php'</script>");
+                echo ("<script>location.href='pincode.php'</script>");
             }
             ?>
         </form>
