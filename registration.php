@@ -76,56 +76,67 @@
 </script>
 
 <!-- Page Content -->
-<form action="" method="post" enctype="multipart/form-data">
-    
-    <h1>Registration Form</h1>
+<section class="h-100" style="background-color: #508bfc;">
+<div class="container-fluid py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="card-body p-5">
+                <form action="" method="post" enctype="multipart/form-data">
+                    
+                    <h1>Registration Form</h1>
 
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" required>
+                    <label class="form-label fs-5" for="name">Name</label>
+                    <input class="form-control fs-4 mb-3" type="text" name="name" id="name" required>
 
-    <label for="mobileNo">Mobile No</label>
-    <input type="tel" name="mobileNo" id="mobileNo" pattern="[1-9]{1}[0-9]{9}" required>
-    
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" required>
+                    <label class="form-label fs-5" for="mobileNo">Mobile No</label>
+                    <input class="form-control fs-4 mb-3" type="tel" name="mobileNo" id="mobileNo" pattern="[1-9]{1}[0-9]{9}" required>
+                    
+                    <label class="form-label fs-5" for="email">Email</label>
+                    <input class="form-control fs-4 mb-3" type="email" name="email" id="email" required>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" onkeyup='check();' required>
+                    <label class="form-label fs-5" for="password">Password</label>
+                    <input class="form-control fs-4 mb-3" type="password" name="password" id="password" onkeyup='check();' required>
 
-    <label for="confirmPassword">Confirm Password <span class='message' id="pwdMsg"></span></label>
-    <input type="password" name="confirmPassword" id="confirmPassword" onkeyup='check();' required>
+                    <label class="form-label fs-5" for="confirmPassword">Confirm Password <span class='message' id="pwdMsg"></span></label>
+                    <input class="form-control fs-4 mb-3" type="password" name="confirmPassword" id="confirmPassword" onkeyup='check();' required>
 
-    <label for="dob">Date of Birth</label>
-    <input type="date" name="dob" id="dob" max="2003-12-31" required>
+                    <label class="form-label fs-5" for="dob">Date of Birth</label>
+                    <input class="form-control fs-4 mb-3" type="date" name="dob" id="dob" max="2003-12-31" required>
 
-    <label for="gender">Gender</label>
-    <input type="radio" name="gender" id="male" value="Male" required>
-    <label for="male" class="light">Male</label>
-    <input type="radio" name="gender" id="female" value="Female">
-    <label for="female" class="light">Female</label>
+                    <label class="form-label fs-5" for="gender">Gender : </label>
+                    <input class="radio" type="radio" name="gender" id="male" value="Male" required>
+                    <label class="form-label fs-5" for="male" class="light">Male</label>
+                    <input class="radio" type="radio" name="gender" id="female" value="Female">
+                    <label class="form-label fs-5" for="female" class="light">Female</label>
+                    <br>
+                    <label class="form-label fs-5" for="bloodGroup">Blood Group : </label>
+                    <select class="form-group fs-5" name="bloodGroup" id="bloodGroup" required>
+                        <option value=""></option>
+                        <option value="A+">A+</option>
+                        <option value="B+">B+</option>
+                        <option value="O+">O+</option>
+                        <option value="AB+">AB+</option>
+                        <option value="A-">A-</option>
+                        <option value="B-">B-</option>
+                        <option value="O-">O-</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                    <br>
+                    <label for="aadharNo" class="form-label fs-5">Aadhar Card No</label>
+                    <input type="text" class="form-control fs-4 mb-3" name="aadharNo" id="aadharNo" pattern="[0-9]{12}" onchange='Hi();' required>
 
-    <br><br>
-    <label for="bloodGroup">Blood Group</label>
-    <select name="bloodGroup" id="bloodGroup" required>
-        <option value=""></option>
-        <option value="A+">A+</option>
-        <option value="B+">B+</option>
-        <option value="O+">O+</option>
-        <option value="AB+">AB+</option>
-        <option value="A-">A-</option>
-        <option value="B-">B-</option>
-        <option value="O-">O-</option>
-        <option value="AB-">AB-</option>
-    </select>
+                    <label for="aadharDocName" class="form-label fs-5">Aadhar Card Photo</label>
+                    <input type="file" class="form-control fs-4 mb-3" name="aadharDocumentImage" id="aadharDocumentImage" accept="image/png, image/jpeg" required>
 
-    <label for="aadharNo">Aadhar Card No</label>
-    <input type="text" name="aadharNo" id="aadharNo" pattern="[0-9]{12}" onchange='Hi();' required>
-
-    <label for="aadharDocName">Aadhar Card Photo</label>
-    <input type="file" name="aadharDocumentImage" id="aadharDocumentImage" accept="image/png, image/jpeg" required>
-
-    <button type="submit" name="submit" id="submit">Register</button>
-</form>
+                    <button type="submit" class="btn btn-primary w-100 mt-3 mb-0" name="submit" id="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</section>
 
 <!-- Footer -->
 <?php include('./includes/footer.php')?>

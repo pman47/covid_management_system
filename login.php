@@ -65,41 +65,56 @@
 
 <?php $user_role = $_GET['user_role'];?>
 
-<form action="" method="post" style="margin:190px auto;">
-    
-    <?php if($_GET["user_role"] == 'admin'){
-        echo "<h1>Admin Login</h1>";
-    } else {
-        echo "<h1>Login</h1>";
-    } ?>
+<section class="vh-100" style="background-color: #508bfc;">
 
-    <?php if($_GET["user_role"] == 'admin'){ ?>
-    <label for="mobileNo">Username</label>
-    <input type="text" name="username" required>
-    <?php } ?>
+<div class="container py-5 vh-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="card-body p-5">
 
-    <?php if($_GET["user_role"] == 'user'){ ?>
-    <label for="mobileNo">Mobile No</label>
-    <input type="tel" name="mobileNo" id="mobileNo" pattern="[1-9]{1}[0-9]{9}" required>
-    <?php } ?>
-    
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    
-    <?php
-        if(!$loginStatus){
-            echo "<span class='message' style='color:red; margin-left:150px;'>Invalid <b>Password</b></span>";
-        }else{
-            echo "<span></span>";
-        }
-    ?>
+            <form action="" method="post">
+                
+                <?php if($_GET["user_role"] == 'admin'){
+                    echo "<h1>Admin Login</h1>";
+                } else {
+                    echo "<h1>Login</h1>";
+                } ?>
 
-    <button type="submit" name="<?php
-    if($_GET["user_role"] == 'admin') echo 'adminLogin';
-    else echo 'userLogin';
-    ?>" id="submit">Login</button>
+                <?php if($_GET["user_role"] == 'admin'){ ?>
+                <label class="form-label fs-4" for="mobileNo">Username</label>
+                <input class="form-control mb-3 fs-4" type="text" name="username" required>
+                <?php } ?>
+                
+                <?php if($_GET["user_role"] == 'user'){ ?>
+                    <label class="form-label fs-4" for="mobileNo">Mobile No</label>
+                    <input class="form-control mb-3 fs-4" type="tel" name="mobileNo" id="mobileNo" pattern="[1-9]{1}[0-9]{9}" required>
+                    <?php } ?>
+                
+                <label class="form-label fs-4" for="password">Password</label>
+                <input class="form-control mb-3 fs-4" type="password" name="password" id="password" required>
+                
+                <?php
+                if(!$loginStatus){
+                    echo "<span class='message' style='color:red; margin-left:150px;'>Invalid <b>Password</b></span>";
+                }else{
+                    echo "<span></span>";
+                }
+                ?>
 
-</form>
+            <button type="submit" name="<?php
+                if($_GET["user_role"] == 'admin') echo 'adminLogin';
+                else echo 'userLogin';
+                ?>" id="submit" class="btn btn-primary btn-lg btn-block w-100">Login</button>
+
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<section>
+
 
 <!-- Footer -->
 <?php include('./includes/footer.php')?>
