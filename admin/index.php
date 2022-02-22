@@ -2,9 +2,10 @@
 <?php include('./includes/header.php'); ?>
 <!-- HEADER -->
 
+<?php include('./includes/db.php');?>
+
 <!-- NAVIGATION -->
 <?php include('./includes/navigation.php'); ?>
 <!-- NAVIGATION -->
-<div class="container">
-    
-</div>
+
+<?php include('./homepage.php');?>
