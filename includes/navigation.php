@@ -36,7 +36,7 @@
             <li><a class="dropdown-item fs-5" href="#">Search for Testings</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
-                <a class="dropdown-item fs-5" href="#">Laboratory Login <img class="login_svg" src="./assets/icons/box-arrow-in-right.svg"></a>
+                <a class="dropdown-item fs-5" href="login.php?user_role=lab">Laboratory Login <img class="login_svg" src="./assets/icons/box-arrow-in-right.svg"></a>
             </li>
           </ul>
         </li>
