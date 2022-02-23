@@ -1,3 +1,6 @@
 <?php include('./includes/header.php'); ?>
+<?php include('./includes/navigation.php'); ?>
 
-Hii Bhai Log
+<?php
+    echo $global_lab_id;
+?>

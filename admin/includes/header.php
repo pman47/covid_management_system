@@ -16,11 +16,11 @@
 </head>
 <body>
 <?php
-session_start();
-if($_SESSION['user_role'] != "admin"){
-  echo '<script>
-    alert("Unauthorized Access");
-    window.location.href="../index.php";
-  </scrip>';
-}
+  session_start();
+  if($_SESSION['user_role'] != 'admin'){
+    echo '<script>
+      alert("Unauthorized Access");
+      window.location.href="../";
+    </scrip>';
+  }
 ?>

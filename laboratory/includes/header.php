@@ -12,3 +12,13 @@
   <title>Laboratory Admin</title>
 </head>
 <body>
+<?php
+  session_start();
+  if($_SESSION['user_role']!='lab'){
+    echo "<script>
+            alert('Unauthorized Access');
+            window.location.href='../';
+          </script>";
+  }
+  $global_lab_id = $_SESSION['lab_id'];
+?>

@@ -41,10 +41,12 @@
         while($row = mysqli_fetch_array($lab_login)){
             $db_username = $row['lab_username'];
             $db_password = $row['lab_password'];
+            $lab_id = $row['lab_id'];
         }    
         if($username === $db_username && $password === $db_password){
             session_start();
             $_SESSION['user_role'] = "lab";
+            $_SESSION['lab_id'] = $lab_id;
             header("Location: ./laboratory/");
         }else{
             echo '<script>
