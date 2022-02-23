@@ -1,6 +1,5 @@
 <?php include('./includes/header.php'); ?>
 <?php include('./includes/navigation.php'); ?>
+<?php include('./includes/db.php'); ?>
 
-<?php
-    echo $global_lab_id;
-?>
+<?php include('./includes/profile_card.php');?>
