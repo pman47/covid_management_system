@@ -14,22 +14,36 @@
 ?>
 
 <div class="container">
-    <div class="row">
-        <?php echo $lab_username; ?>
+    <div class="card mt-5 px-5 py-3">
+        <div class="card-body row">
+            <div class="col-7">
+                <?php
+                    if($lab_status=='close'){
+                        echo "<h3 class='card-title text-danger'>$lab_name</h3>";
+                    }else{
+                        echo "<h3 class='card-title text-success'>$lab_name</h3>";
+                    }
+                ?>
+                <h5 class="card-subtitle mb-2 text-muted">username : <?php echo $lab_username; ?></h5>
+                <h5 class="card-text mb-2"><?php echo $lab_address; ?></h5>
+                
+                <a href="#" class="card-link">Edit Profile</a>
+
+            </div>
+            <div class="col-3">
+                <h6 class="card-text mb-1">Status</h6>
+                <?php
+                    if($lab_status=='close'){
+                        echo "<a href='#' class='btn btn-danger rounded-pill px-4 mt-0 mb-4 disabled'>Closed</a>";
+                    }else{
+                        echo "<a href='#' class='btn btn-success rounded-pill px-4 mt-0 mb-4 disabled'>Open</a>";
+                    }
+                ?>
+                
+                <h5 class="card-text">+91 <?php echo $lab_contact_no; ?></h5>
+                <h6 class="card-text">Pincode: <b><?php echo $lab_pincode; ?></b></h6>
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <?php echo $lab_name; ?>
-    </div>
-    <div class="row">
-        <?php echo $lab_address; ?>
-    </div>
-    <div class="row">
-        <?php echo $lab_contact_no; ?>
-    </div>
-    <div class="row">
-        <?php echo $lab_pincode; ?>
-    </div>
-    <div class="row">
-        <?php echo $lab_status; ?>
-    </div>
+
 </div>
