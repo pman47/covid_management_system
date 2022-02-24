@@ -16,7 +16,7 @@
 <div class="container">
     <div class="card mt-5 px-5 py-3">
         <div class="card-body row">
-            <div class="col-7">
+            <div class="col-8">
                 <?php
                     if($lab_status=='close'){
                         echo "<h3 class='card-title text-danger'>$lab_name</h3>";
@@ -27,10 +27,18 @@
                 <h5 class="card-subtitle mb-2 text-muted">username : <?php echo $lab_username; ?></h5>
                 <h5 class="card-text mb-2"><?php echo $lab_address; ?></h5>
                 
-                <a href="#" class="card-link">Edit Profile</a>
+                <h6 class="card-text">Pincode:
+                    <b><?php echo $lab_pincode; ?></b>
+                    <?php
+                        $query = "SELECT pincode.area_name,district.district_name FROM pincode INNER JOIN district ON pincode.district_id=district.district_id";
+                        $pincode_details = mysqli_query($connection,$query);
+                        $row = mysqli_fetch_assoc($pincode_details);
+                        echo "- ".$row['area_name'].", ".$row['district_name'];
+                    ?>
+                </h6>
 
             </div>
-            <div class="col-3">
+            <div class="col">
                 <h6 class="card-text mb-1">Status</h6>
                 <?php
                     if($lab_status=='close'){
@@ -41,7 +49,7 @@
                 ?>
                 
                 <h5 class="card-text">+91 <?php echo $lab_contact_no; ?></h5>
-                <h6 class="card-text">Pincode: <b><?php echo $lab_pincode; ?></b></h6>
+                <a href="#" class="card-link">Edit Profile</a>
             </div>
         </div>
     </div>
