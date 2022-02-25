@@ -30,7 +30,7 @@
                 <h6 class="card-text">Pincode:
                     <b><?php echo $lab_pincode; ?></b>
                     <?php
-                        $query = "SELECT pincode.area_name,district.district_name FROM pincode INNER JOIN district ON pincode.district_id=district.district_id";
+                        $query = "SELECT pincode.area_name,district.district_name FROM pincode INNER JOIN district ON pincode.district_id=district.district_id WHERE pincode.pincode = $lab_pincode";
                         $pincode_details = mysqli_query($connection,$query);
                         $row = mysqli_fetch_assoc($pincode_details);
                         echo "- ".$row['area_name'].", ".$row['district_name'];

@@ -44,7 +44,7 @@ if(isset($_GET["lab_id"])){
         <input type="text" name="username" value="<?php if(isset($lab_username)){echo $lab_username;} ?>" id="username" required>
 
         <label for="address">Address</label>
-        <textarea min="10" max="200" name="address" required> <?php if(isset($lab_address)){echo $lab_address;} ?> </textarea>
+        <textarea min="10" max="200" name="address" required><?php if(isset($lab_address)){echo $lab_address;} ?></textarea>
 
         <label for="mobileNo">Contact No</label>
         <input type="tel" name="mobileNo" id="mobileNo" pattern="[1-9]{1}[0-9]{9}" value="<?php if(isset($lab_contactNo)){echo $lab_contactNo;} ?>" required>

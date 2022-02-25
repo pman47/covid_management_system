@@ -49,7 +49,7 @@
             <li><a class="dropdown-item fs-5" href="#">Search for Vacancy of Beds</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
-                <a class="dropdown-item fs-5" href="#">Hospital Login <img class="login_svg" src="./assets/icons/box-arrow-in-right.svg"></a>
+                <a class="dropdown-item fs-5" href="login.php?user_role=hospital">Hospital Login <img class="login_svg" src="./assets/icons/box-arrow-in-right.svg"></a>
             </li>
           </ul>
         </li>

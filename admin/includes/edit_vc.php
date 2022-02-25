@@ -61,7 +61,7 @@ if(isset($_GET["vc_id"])){
     <input type="text" name="username" value="<?php if(isset($vc_username)){echo $vc_username;} ?>" id="username" required>
     
     <label for="address">Address</label>
-    <textarea min="10" max="200" name="address" required> <?php if(isset($vc_address)){echo $vc_address;} ?> </textarea>
+    <textarea min="10" max="200" name="address" required><?php if(isset($vc_address)){echo $vc_address;} ?></textarea>
     
     <label for="pincode">Pincode</label>
     <!-- <input type="text" name="pincode" id="pincode" pattern="[1-9]{1}[0-9]{5}" value="<?php if(isset($vc_pincode)){echo $vc_pincode;} ?>" maxlength="6" required> -->

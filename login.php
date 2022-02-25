@@ -57,6 +57,31 @@
         }
     }
 
+    if(isset($_POST['hospitallogin'])){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $query = "SELECT * FROM hospitals WHERE hospital_username = '{$username}'";
+        $hospital_login = mysqli_query($connection,$query);
+        confirm($hospital_login);
+        while($row = mysqli_fetch_array($hospital_login)){
+            $db_username = $row['hospital_username'];
+            $db_password = $row['hospital_password'];
+            $hospital_id = $row['hospital_id'];
+        }    
+        if($username === $db_username && $password === $db_password){
+            session_start();
+            $_SESSION['user_role'] = "hospital";
+            $_SESSION['hospital_id'] = $hospital_id;
+            header("Location: ./hospital/");
+        }else{
+            echo '<script>
+            alert("Wrong username or password");
+            window.location.href="login.php?user_role=hospital";
+            </script>';
+            // header("Location: login.php?user_role=admin");
+        }
+    }
+
     if(isset($_POST['userLogin'])){ 
         $mobileNo = $_POST['mobileNo'];
         $password = $_POST['password'];
@@ -106,7 +131,7 @@
                     echo "<h1>Login</h1>";
                 } ?>
 
-                <?php if($_GET["user_role"] == 'admin' || $_GET["user_role"] == 'lab'){ ?>
+                <?php if($_GET["user_role"] == 'admin' || $_GET["user_role"] == 'lab' || $_GET["user_role"] == 'hospital'){ ?>
                 <label class="form-label fs-4" for="mobileNo">Username</label>
                 <input class="form-control mb-3 fs-4" type="text" name="username" required>
                 <?php } ?>
@@ -130,6 +155,7 @@
             <button type="submit" name="<?php
                 if($_GET["user_role"] == 'admin') echo 'adminLogin';
                 else if($_GET["user_role"] == 'lab') echo 'lablogin';
+                else if($_GET["user_role"] == 'hospital') echo 'hospitallogin';
                 else echo 'userLogin';
                 ?>" id="submit" class="btn btn-primary btn-lg btn-block w-100">Login</button>
 

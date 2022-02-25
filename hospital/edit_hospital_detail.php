@@ -3,18 +3,18 @@
 <?php include('./includes/db.php'); ?>
 
 <?php
-    $lab_id = $global_lab_id;
-    $query = "SELECT * FROM laboratories WHERE lab_id = '{$lab_id}'";
+    $hospital_id = $global_hospital_id;
+    $query = "SELECT * FROM hospitals WHERE hospital_id = '{$hospital_id}'";
 
-    $viewLabDetail = mysqli_query($connection,$query);
-    $row = mysqli_fetch_assoc($viewLabDetail);
-    $lab_username = $row["lab_username"];
-    $lab_password = $row["lab_password"];
-    $lab_name = $row["lab_name"];
-    $lab_address = $row["lab_address"];
-    $lab_contact_no = $row["contact_no"];
-    $lab_pincode = $row["lab_pincode"];
-    $lab_status = $row["lab_status"];
+    $viewHospitalDetail = mysqli_query($connection,$query);
+    $row = mysqli_fetch_assoc($viewHospitalDetail);
+    $hospital_username =    $row["hospital_username"];
+    $hospital_password =    $row["hospital_password"];
+    $hospital_name =        $row["hospital_name"];
+    $hospital_address =     $row["hospital_address"];
+    $hospital_contact_no =  $row["contact_no"];
+    $hospital_pincode =     $row["hospital_pincode"];
+    $hospital_status =      $row["hospital_status"];
 ?>
 
 <script>
@@ -32,28 +32,28 @@
 
                         <div class="col-md-12">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="text" name="updatedName" value="<?php if(isset($lab_name)){echo $lab_name;} ?>">
+                            <input type="text" class="form-control" id="text" name="updatedName" value="<?php if(isset($hospital_name)){echo $hospital_name;} ?>">
                         </div>
 
                         <div class="col-md-6">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="text" name="updatedUsername" disabled value="<?php if(isset($lab_username)){echo $lab_username;} ?>">
+                            <input type="text" class="form-control" id="text" name="updatedUsername" disabled value="<?php if(isset($hospital_username)){echo $hospital_username;} ?>">
                         </div>
 
                         <div class="col-md-6">
                             <label for="inputPassword4" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="inputPassword4" name="updatedPassword" value="<?php if(isset($lab_password)){echo $lab_password;} ?>">
+                            <input type="password" class="form-control" id="inputPassword4" name="updatedPassword" value="<?php if(isset($hospital_password)){echo $hospital_password;} ?>">
                         </div>
 
                         <div class="col-md-12">
                             <label for="contact_no" class="form-label">Contact No</label>
-                            <input type="text" class="form-control" name="updatedContactNo" id="contactNo" value="<?php if(isset($lab_contact_no)){echo $lab_contact_no;} ?>">
+                            <input type="text" class="form-control" name="updatedContactNo" id="contactNo" value="<?php if(isset($hospital_contact_no)){echo $hospital_contact_no;} ?>">
                         </div>
 
                         <div class="col-12">
                             <label for="inputAddress" class="form-label">Address</label>
                             <!-- <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"> -->
-                            <textarea name="updatedAddress" class="form-control" id="address" rows="2" name="updatedAddress"><?php if(isset($lab_address)){echo $lab_address;} ?></textarea>
+                            <textarea name="updatedAddress" class="form-control" id="address" rows="2" name="updatedAddress"><?php if(isset($hospital_address)){echo $hospital_address;} ?></textarea>
                         </div>
 
                         <!-- <div class="col-md-12">
@@ -73,7 +73,7 @@
                                         $area_name = $row['area_name'];
                                         $district_name = $row['district_name'];
                                         echo "<option value='$pincode'";
-                                        if($pincode==$lab_pincode) echo "selected";
+                                        if($pincode==$hospital_pincode) echo "selected";
                                         echo "> $pincode    | $area_name,$district_name </option>";
                                     }
                                 ?>
@@ -83,14 +83,14 @@
                         <div class="col-md-6 mt-0">
                             <label for="pincode" class="form-label">Status</label><br>
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                <?php if($lab_status=='open'){?>
+                                <?php if($hospital_status=='open'){?>
                                     <input type="radio" class="btn-check" name="updatedStatus" value="open" id="btnradio1" checked>
                                 <?php }else {?>
                                     <input type="radio" class="btn-check" name="updatedStatus" value="open" id="btnradio1">
                                 <?php }?>
                                 <label class="btn btn-outline-success" for="btnradio1">Open</label>
                                 
-                                <?php if($lab_status=='close'){?>
+                                <?php if($hospital_status=='close'){?>
                                     <input type="radio" class="btn-check" name="updatedStatus" value="close" id="btnradio2" checked>
                                 <?php }else {?>
                                     <input type="radio" class="btn-check" name="updatedStatus" value="close" id="btnradio2">
@@ -101,7 +101,7 @@
                         </div>
 
                         <div class="col-12 mt-5">
-                            <button type="submit" name="editLab" class="btn btn-outline-dark w-100" style="border-radius: 25px">Update</button>
+                            <button type="submit" name="editHospital" class="btn btn-outline-dark w-100" style="border-radius: 25px">Update</button>
                         </div>
                     </form>
                 </div>
@@ -111,16 +111,16 @@
 </div>
 
 <?php
-    if(isset($_POST['editLab'])){
-        $lab_username = $_POST["updatedUsername"];
-        $lab_password = $_POST["updatedPassword"];
-        $lab_name = $_POST["updatedName"];
-        $lab_address = $_POST["updatedAddress"];
-        $lab_contact_no = $_POST["updatedContactNo"];
-        $lab_pincode = $_POST["updatedPincode"];
-        $lab_status = $_POST["updatedStatus"];
+    if(isset($_POST['editHospital'])){
+        $hospital_username = $_POST["updatedUsername"];
+        $hospital_password = $_POST["updatedPassword"];
+        $hospital_name = $_POST["updatedName"];
+        $hospital_address = $_POST["updatedAddress"];
+        $hospital_contact_no = $_POST["updatedContactNo"];
+        $hospital_pincode = $_POST["updatedPincode"];
+        $hospital_status = $_POST["updatedStatus"];
 
-        $query = "UPDATE laboratories SET lab_name = '{$lab_name}',lab_password = '{$lab_password}',lab_address = '{$lab_address}',lab_pincode = '{$lab_pincode}',contact_no = '{$lab_contact_no}',lab_status='{$lab_status}' WHERE lab_id = {$lab_id}";
+        $query = "UPDATE hospitals SET hospital_name = '{$hospital_name}',hospital_password = '{$hospital_password}',hospital_address = '{$hospital_address}',hospital_pincode = '{$hospital_pincode}',contact_no = '{$hospital_contact_no}',hospital_status='{$hospital_status}' WHERE hospital_id = {$hospital_id}";
         $update_query = mysqli_query($connection,$query);
         if(!$update_query){
             $connection;
