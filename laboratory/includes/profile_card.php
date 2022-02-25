@@ -19,9 +19,9 @@
             <div class="col-8">
                 <?php
                     if($lab_status=='close'){
-                        echo "<h3 class='card-title text-danger'>$lab_name <small class='text-muted h5'>- $lab_username</small> </h3>";
+                        echo "<h3 class='card-title text-danger'>$lab_name <small class='text-muted h5'>- $lab_username </small></h3>";
                     }else{
-                        echo "<h3 class='card-title text-success'>$lab_name <small class='text-muted h5'>- $lab_username</small></h3>";
+                        echo "<h3 class='card-title text-success'>$lab_name <small class='text-muted h5'>- $lab_username </small></h3>";
                     }
                 ?>
                 <!-- <h5 class="card-subtitle mb-2 text-muted">username : <?php echo $lab_username; ?></h5> -->
@@ -49,7 +49,7 @@
                 ?>
                 
                 <h5 class="card-text">+91 <?php echo $lab_contact_no; ?></h5>
-                <a href="#" class="card-link text-secondary">Edit Profile</a>
+                <a href="./edit_laboratory_detail.php" class="card-link text-secondary">Edit Profile</a>
             </div>
         </div>
     </div>
