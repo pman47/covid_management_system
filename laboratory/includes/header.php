@@ -15,7 +15,7 @@
 
   <title>Laboratory Admin</title>
 </head>
-<body>
+<body class="bg-light">
 <?php
   session_start();
   if($_SESSION['user_role']!='lab'){

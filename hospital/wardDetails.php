@@ -74,7 +74,7 @@
 
 
     <!-- Ward table -->
-    <div class="card px-5 py-3">
+    <div class="card px-5 py-3 shadow">
         <table class="table">
             <thead>
                 <tr>

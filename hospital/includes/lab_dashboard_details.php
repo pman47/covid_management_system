@@ -3,13 +3,13 @@
     <div class="row">
 
         <div class="col-7">
-            <div class="card p-3">
+            <div class="card p-3 shadow">
                 <h5 class="mb-0">Bed Requests</h5>
                 <hr>
             </div>
         </div>
         <div class="col">
-            <div class="card p-3">
+            <div class="card p-3 shadow">
                 <h5 class="mb-0">Hospital Wards</h5>
                 <hr>
                 <table class="table">

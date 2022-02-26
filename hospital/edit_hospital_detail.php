@@ -26,7 +26,7 @@
 <div class="container mt-5">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div class="card" style="border-radius: 1rem;">
+            <div class="card shadow" style="border-radius: 1rem;">
                 <div class="card-body p-4">
                     <form class="row g-3" method="POST">
 

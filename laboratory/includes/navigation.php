@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light shadow-sm bg-white">
   <div class="container">
     <a class="navbar-brand mb-0 h1 fs-4" href="./">Laboratory - Admin</a>
 
