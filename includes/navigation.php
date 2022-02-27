@@ -46,7 +46,7 @@
             Vacancy Of Beds
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item fs-5" href="#">Search for Vacancy of Beds</a></li>
+            <li><a class="dropdown-item fs-5" href="search.php?for=hospital">Search for Vacancy of Beds</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
                 <a class="dropdown-item fs-5" href="login.php?user_role=hospital">Hospital Login <img class="login_svg" src="./assets/icons/box-arrow-in-right.svg"></a>

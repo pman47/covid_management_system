@@ -46,7 +46,7 @@ $(document).ready(function() {
                 <select class="form-select w-25 mx-1 rounded-pill px-4 fs-5" name="districtId" id="districts">
                     <option value="">Select District</option>
                 </select>
-                <button type="submit" name="searchTesting" class="btn btn-secondary btn-lg px-5 rounded-pill mx-2">Search</button>
+                <button type="submit" name="searchHospital" class="btn btn-secondary btn-lg px-5 rounded-pill mx-2">Search</button>
             </form>
         </div>
     </div>
@@ -54,22 +54,22 @@ $(document).ready(function() {
 
 <div class="container">
 <?php
-    if(isset($_POST["searchTesting"])){
+    if(isset($_POST["searchHospital"])){
         $districtId = isset($_POST["districtId"])?$_POST["districtId"]:"";
-        $query = "SELECT * FROM laboratories INNER JOIN pincode ON laboratories.lab_pincode = pincode.pincode INNER JOIN district ON pincode.district_id = district.district_id WHERE laboratories.lab_status = 'open' AND district.district_id = '{$districtId}'";
+        $query = "SELECT * FROM hospitals INNER JOIN pincode ON hospitals.hospital_pincode = pincode.pincode INNER JOIN district ON pincode.district_id = district.district_id WHERE hospitals.hospital_status = 'open' AND district.district_id = '{$districtId}'";
         $getAllDetails = mysqli_query($connection,$query);
         if(mysqli_num_rows($getAllDetails)==0){
             ?>
             <div class="card shadow d-flex align-items-center justify-content-md-center" style="min-height:200px;">
-                <h4>No Laboratories Found</h4>
+                <h4>No Hospital Found</h4>
             </div>
             <?php
         }else{
             while($row = mysqli_fetch_assoc($getAllDetails)){
-                $lab_name = $row['lab_name'];
-                $lab_address = $row['lab_address'];
+                $hospital_name = $row['hospital_name'];
+                $hospital_address = $row['hospital_address'];
                 $contact_no = $row['contact_no'];
-                $lab_pincode = $row['lab_pincode'];
+                $hospital_pincode = $row['hospital_pincode'];
                 $area_name = $row['area_name'];
                 $district_name = $row['district_name'];
                 ?>
@@ -79,16 +79,16 @@ $(document).ready(function() {
                         <div class="col">
                             <div class="row">
                                 <div class="col">
-                                    <?php echo "<h4 class='card-title'>$lab_name</h4>"; ?>
+                                    <?php echo "<h4 class='card-title'>$hospital_name</h4>"; ?>
                                 </div>
                                 <div class="col">
                                     <h6 class="card-text">+91 <?php echo $contact_no; ?></h6>
                                 </div>
                             </div>
-                            <h5 class="card-text"><?php echo $lab_address; ?></h5>
+                            <h5 class="card-text"><?php echo $hospital_address; ?></h5>
                             
                             <h6 class="card-text">Pincode:
-                                <b><?php echo $lab_pincode; ?></b>
+                                <b><?php echo $hospital_pincode; ?></b>
                                 <?php echo "- ".$area_name.", ".$district_name;?>
                             </h6>
 
