@@ -76,11 +76,11 @@
 </script>
 
 <!-- Page Content -->
-<section class="h-100" style="background-color: #508bfc;">
+<section class="h-100 bg-light">
 <div class="container-fluid py-5">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card" style="border-radius: 1rem;">
+        <div class="card shadow" style="border-radius: 1rem;">
           <div class="card-body p-5">
                 <form action="" method="post" enctype="multipart/form-data">
                     

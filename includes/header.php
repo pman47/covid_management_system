@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
 
   <script src="./bootstrap/js/bootstrap.js"></script>
+  <script src="./jquery.min.js"></script>
 
   <title>Covid Management System</title>
 </head>
-<body>
+<body class="bg-light">

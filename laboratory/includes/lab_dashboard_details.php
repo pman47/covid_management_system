@@ -20,7 +20,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            $query = "SELECT labs_testings.price, testing_types.tt_name FROM labs_testings INNER JOIN testing_types ON labs_testings.tt_id=testing_types.tt_id LIMIT 5";
+                            $query = "SELECT labs_testings.price, testing_types.tt_name FROM labs_testings INNER JOIN testing_types ON labs_testings.tt_id=testing_types.tt_id WHERE lab_id = $global_lab_id LIMIT 5";
                             $allLabTesting = mysqli_query($connection,$query);
                             if(mysqli_num_rows($allLabTesting)==0){
                                 echo "</tbody></table> <div class='w-100 d-flex align-items-center justify-content-center' style='height:100px;'><div>No Record Found.</div></div>";

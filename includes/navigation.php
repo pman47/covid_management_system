@@ -10,7 +10,7 @@
 </div>
 </div> -->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
   <div class="container">
     <a class="navbar-brand fs-2" href="./">CMS</a>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -33,7 +33,7 @@
             Testing
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item fs-5" href="#">Search for Testings</a></li>
+            <li><a class="dropdown-item fs-5" href="search.php?for=testing">Search for Testings</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
                 <a class="dropdown-item fs-5" href="login.php?user_role=lab">Laboratory Login <img class="login_svg" src="./assets/icons/box-arrow-in-right.svg"></a>

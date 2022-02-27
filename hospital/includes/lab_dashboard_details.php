@@ -22,7 +22,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            $query = "SELECT bed_count.total_beds, bed_count.available_beds, wards.ward_name FROM bed_count INNER JOIN wards ON bed_count.ward_id=wards.ward_id LIMIT 5";
+                            $query = "SELECT bed_count.total_beds, bed_count.available_beds, wards.ward_name FROM bed_count INNER JOIN wards ON bed_count.ward_id=wards.ward_id WHERE hospital_id = $global_hospital_id LIMIT 5";
                             $allBedDetails = mysqli_query($connection,$query);
                             if(mysqli_num_rows($allBedDetails)==0){
                                 echo "</tbody></table> <div class='w-100 d-flex align-items-center justify-content-center' style='height:100px;'><div>No Record Found.</div></div>";

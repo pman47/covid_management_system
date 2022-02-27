@@ -86,7 +86,7 @@
             </thead>
             <tbody>
                 <?php
-                    $query = "SELECT bed_count.hospital_id, bed_count.bed_count_id, bed_count.ward_id, bed_count.total_beds, bed_count.available_beds, wards.ward_name FROM bed_count INNER JOIN wards ON bed_count.ward_id=wards.ward_id";
+                    $query = "SELECT bed_count.hospital_id, bed_count.bed_count_id, bed_count.ward_id, bed_count.total_beds, bed_count.available_beds, wards.ward_name FROM bed_count INNER JOIN wards ON bed_count.ward_id=wards.ward_id WHERE hospital_id = $global_hospital_id";
                     $allBedCount = mysqli_query($connection,$query);
                     if(mysqli_num_rows($allBedCount)==0){
                         echo "<tr><td colspan='4' class='text-center'>No Record Found.</td></tr>";

@@ -84,7 +84,7 @@
             </thead>
             <tbody>
                 <?php
-                    $query = "SELECT labs_testings.lab_id, labs_testings.LT_id, labs_testings.tt_id, labs_testings.price, testing_types.tt_name FROM labs_testings INNER JOIN testing_types ON labs_testings.tt_id=testing_types.tt_id";
+                    $query = "SELECT labs_testings.lab_id, labs_testings.LT_id, labs_testings.tt_id, labs_testings.price, testing_types.tt_name FROM labs_testings INNER JOIN testing_types ON labs_testings.tt_id=testing_types.tt_id WHERE lab_id = $global_lab_id";
                     $allLabTesting = mysqli_query($connection,$query);
                     if(mysqli_num_rows($allLabTesting)==0){
                         echo "<tr><td colspan='4' class='text-center'>No Record Found.</td></tr>";

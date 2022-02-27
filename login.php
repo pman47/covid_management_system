@@ -115,12 +115,12 @@
 
 <?php $user_role = $_GET['user_role'];?>
 
-<section class="vh-100" style="background-color: #508bfc;">
+<section class="vh-100 bg-light">
 
-<div class="container py-5 vh-100">
+<div class="container py-5" style="height: 80vh;">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card" style="border-radius: 1rem;">
+        <div class="card shadow" style="border-radius: 1rem;">
           <div class="card-body p-5">
 
             <form action="" method="post">
