@@ -11,7 +11,7 @@
       <div class="col-12 col-md-6">
         <div class="card shadow" style="border-radius: 1rem;">
             <div class="card-body p-4">
-                <form action="./moreDetails.php" method="post">
+                <form action="./moreHospitalDetails.php" method="post">
                     <div class="col">
                         
                         <h2>Hospital Details :</h2>
