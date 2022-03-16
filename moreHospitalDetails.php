@@ -162,6 +162,7 @@ if(isset($_POST["register"])){
             confirm($addWards);
         }
 
+        $_SESSION["RegisteringHospitalId"] = "";
         echo "<script> alert('Hospital request successfully sended'); </script>";
         echo "<script> location.href='index.php';</script>";
     } else {

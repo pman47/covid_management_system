@@ -34,6 +34,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item fs-5" href="search.php?for=testing">Search for Testings</a></li>
+            <li><a class="dropdown-item fs-5" href="requestLaboratory.php">Request New Laboratory</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
                 <a class="dropdown-item fs-5" href="login.php?user_role=lab">Laboratory Login <img class="login_svg" src="./assets/icons/box-arrow-in-right.svg"></a>
