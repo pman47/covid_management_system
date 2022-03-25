@@ -69,11 +69,12 @@
             $db_username = $row['hospital_username'];
             $db_password = $row['hospital_password'];
             $hospital_id = $row['hospital_id'];
+            $hospital_name = $row['hospital_name'];
         }    
         if($username === $db_username && $password === $db_password){
-            session_start();
             $_SESSION['user_role'] = "hospital";
             $_SESSION['hospital_id'] = $hospital_id;
+            $_SESSION['hospital_name'] = $hospital_name;
             header("Location: ./hospital/");
         }else{
             echo '<script>

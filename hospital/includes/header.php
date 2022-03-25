@@ -25,4 +25,5 @@
           </script>";
   }
   $global_hospital_id = $_SESSION['hospital_id'];
+  $global_hospital_name = $_SESSION['hospital_name'];
 ?>
