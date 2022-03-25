@@ -5,30 +5,30 @@
 <?php
 
     // Add Bed Count
-    if(isset($_POST['addBedCount'])){
+    if(isset($_POST['addWard'])){
         $hospital_id = $global_hospital_id;
-        $ward_id = $_POST['wardId'];
+        $ward_name = $_POST['wardName'];
         $total_beds = $_POST['wardTotalBeds'];
         $available_beds = $_POST['wardTotalBeds'];
-        $query = "INSERT INTO bed_count (hospital_id,ward_id,total_beds,available_beds) VALUES ('{$hospital_id}','{$ward_id}','{$total_beds}','{$available_beds}')";
-        $addBedCount = mysqli_query($connection,$query);
-        if(!$addBedCount){
+        $query = "INSERT INTO ward_details (ward_name,Total_beds,Available_beds,hospital_id) VALUES ('{$ward_name}','{$total_beds}','{$available_beds}','{$hospital_id}')";
+        $addWard = mysqli_query($connection,$query);
+        if(!$addWard){
             die("QUERY FAILED " . mysqli_error($connection));
         }else{
-            echo "<script>alert('Bed Added Successfully.')</script>";
+            echo "<script>alert('Ward Detail Added Successfully.')</script>";
             echo "<script>location.href='./wardDetails.php'</script>";
         }
     }
 
     // Delete Wards
-    if(isset($_GET['DeleteBed'])){
-        $bed_count_id = $_GET['DeleteBed'];
-        $query = "DELETE FROM bed_count WHERE bed_count_id = '{$bed_count_id}'";
+    if(isset($_GET['DeleteWard'])){
+        $ward_id = $_GET['DeleteWard'];
+        $query = "DELETE FROM ward_details WHERE ward_id = '{$ward_id}'";
         $delete = mysqli_query($connection,$query);
         if(!$delete){
             die("QUERY FAILED " . mysqli_error($connection));
         }else{
-            echo "<script>location.href='./wardDetails.php'</script>";
+            echo "<script>alert('Ward deleted successfully');location.href='./wardDetails.php'</script>";
         }
     }
 
@@ -41,25 +41,7 @@
         <form class="d-flex" method="POST">
             <!-- Select Ward -->
             <div class="form-group">
-                <select class="form-control" name="wardId">
-                    <option value="#">Select Ward</option>
-
-                    <?php
-                        $query="SELECT * FROM wards";
-                        $getWardTypes = mysqli_query($connection,$query);
-                        while($row = mysqli_fetch_array($getWardTypes)){
-                            $ward_id = $row['ward_id'];
-                            $ward_name = $row['ward_name'];
-
-                            $query = "SELECT * FROM bed_count WHERE ward_id = $ward_id AND hospital_id = $global_hospital_id";
-                            $check = mysqli_query($connection,$query);
-                            if(mysqli_num_rows($check)!=1){
-                                echo "<option value='$ward_id'>$ward_name</option>";
-                            }
-
-                        }
-                    ?>
-                </select>
+                <input type="text" class="form-control" name="wardName" id="" placeholder="Enter Ward Name">
             </div>
 
             <!-- Total Beds -->
@@ -68,7 +50,7 @@
             </div>
 
             <!-- btn -->
-            <button type="submit" name="addBedCount" class="btn btn-success">+ Add</button>
+            <button type="submit" name="addWard" class="btn btn-success">+ Add</button>
         </form>
     </div>
 
@@ -78,6 +60,7 @@
         <table class="table">
             <thead>
                 <tr>
+                <th scope="col">#</th>
                 <th scope="col">Ward Name</th>
                 <th scope="col">Total Beds</th>
                 <th scope="col">Available Beds</th>
@@ -86,27 +69,28 @@
             </thead>
             <tbody>
                 <?php
-                    $query = "SELECT bed_count.hospital_id, bed_count.bed_count_id, bed_count.ward_id, bed_count.total_beds, bed_count.available_beds, wards.ward_name FROM bed_count INNER JOIN wards ON bed_count.ward_id=wards.ward_id WHERE hospital_id = $global_hospital_id";
+                    $query = "SELECT * FROM ward_details WHERE hospital_id = $global_hospital_id";
                     $allBedCount = mysqli_query($connection,$query);
                     if(mysqli_num_rows($allBedCount)==0){
                         echo "<tr><td colspan='4' class='text-center'>No Record Found.</td></tr>";
                     }else{
+                        $index = 1;
                         while($row=mysqli_fetch_array($allBedCount)){
-                            $bed_count_id = $row['bed_count_id'];
-                            $hospital_id = $row['hospital_id'];
                             $ward_id = $row['ward_id'];
-                            $total_beds = $row['total_beds'];
-                            $available_beds = $row['available_beds'];
                             $ward_name = $row['ward_name'];
+                            $total_beds = $row['Total_beds'];
+                            $available_beds = $row['Available_beds'];
                             echo "
                                 <tr>
+                                <th scope='row'>$index</th>
                                 <th scope='row'>$ward_name</th>
                                 <td>$total_beds</td>
                                 <td>$available_beds</td>
-                                <td><a href='wardDetails.php?EditBed={$bed_count_id}' class='card-link text-secondary'>Edit</a></td>
-                                <td><a href='wardDetails.php?DeleteBed={$bed_count_id}' class='card-link text-secondary' onClick=\"javascript: return confirm('Are You Sure?');\">Delete</a></td>
+                                <td><a href='wardDetails.php?EditWard={$ward_id}' class='card-link text-secondary'>Edit</a></td>
+                                <td><a href='wardDetails.php?DeleteWard={$ward_id}' class='card-link text-secondary' onClick=\"javascript: return confirm('Are You Sure?');\">Delete</a></td>
                                 </tr>
                             ";
+                            $index++;
                         }
                     }
                 ?>
@@ -117,14 +101,14 @@
 
 <!-- EDIT WARDS -->
 <?php
-    if(isset($_GET['EditBed'])){
-        $bed_count_id = $_GET['EditBed'];
-        $query = "SELECT  bed_count.total_beds, bed_count.available_beds, wards.ward_name FROM bed_count INNER JOIN wards ON bed_count.ward_id=wards.ward_id WHERE bed_count.bed_count_id = '{$bed_count_id}'";
+    if(isset($_GET['EditWard'])){
+        $ward_id = $_GET['EditWard'];
+        $query = "SELECT * FROM ward_details WHERE ward_id = '{$ward_id}'";
         $forEdit = mysqli_query($connection,$query);
         while($row=mysqli_fetch_array($forEdit)){
             $ward_name = $row['ward_name'];
-            $total_beds = $row['total_beds'];
-            $available_beds = $row['available_beds'];
+            $total_beds = $row['Total_beds'];
+            $available_beds = $row['Available_beds'];
         }
 
         ?>
@@ -158,11 +142,11 @@
     if(isset($_POST['UpdateBedCount'])){
         $updatedTotalBed = $_POST['updatedTotalBed'];
         $updatedAvailableBed = $_POST['updatedAvailableBed'];
-        $query = "UPDATE bed_count SET total_beds = '{$updatedTotalBed}', available_beds = '{$updatedAvailableBed}' WHERE bed_count_id = {$bed_count_id}";
+        $query = "UPDATE ward_details SET Total_beds = '{$updatedTotalBed}', Available_beds = '{$updatedAvailableBed}' WHERE ward_id = {$ward_id}";
         $check = mysqli_query($connection,$query);
         if(!$check){
             echo die("Update Query Failed" . mysqli_error($connection));
         }
-        echo "<script>location.href='./wardDetails.php'</script>";
+        echo "<script>alert('Ward Updated');location.href='./wardDetails.php'</script>";
     }
 ?>
