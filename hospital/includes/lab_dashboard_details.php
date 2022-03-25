@@ -2,7 +2,10 @@
     <div class="row">
         <div class="col">
             <div class="card p-3 shadow">
-                <h5 class="mb-0">Doctor Details</h5>
+                <div class="col d-flex justify-content-between">
+                    <h5 class="mb-0">Doctor Details</h5>
+                    <a href="doctorDetails.php" class="card-link link-secondary px-3" style="cursor:pointer;">Edit</a>
+                </div>
                 <hr>
                 <table class="table">
                     <thead>
