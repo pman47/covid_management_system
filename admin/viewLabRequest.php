@@ -35,10 +35,10 @@
                 <div class="col">
                     <div class="row">
                         <div class="col">
-                            <?php echo "<h4 class='card-title'>$lab_name</h4>"; ?>
+                            <h3 class='card-title text-success'><?php echo $lab_name; ?><small class='text-muted h5'>- <?php echo $lab_username; ?></small></h3>
                         </div>
                         <div class="col">
-                            <h6 class="card-text">+91 <?php echo $contact_no; ?></h6>
+                            <h5 class="card-text">+91 <?php echo $contact_no; ?></h5>
                         </div>
                     </div>
                     <h5 class="card-text"><?php echo $lab_address; ?></h5>

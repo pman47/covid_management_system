@@ -25,4 +25,5 @@
           </script>";
   }
   $global_lab_id = $_SESSION['lab_id'];
+  $global_lab_name = $_SESSION['lab_name'];
 ?>

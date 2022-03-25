@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light shadow-sm bg-white">
   <div class="container">
-    <a class="navbar-brand mb-0 h1 fs-4" href="./">Laboratory - Admin</a>
+    <a class="navbar-brand mb-0 h1 fs-4" href="./"><?php echo $global_lab_name;?></a>
 
     <ul class="navbar-nav">
       <li class="nav-item">

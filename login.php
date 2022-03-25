@@ -43,11 +43,12 @@
             $db_username = $row['lab_username'];
             $db_password = $row['lab_password'];
             $lab_id = $row['lab_id'];
+            $lab_name = $row['lab_name'];
         }    
         if($username === $db_username && $password === $db_password){
-            session_start();
             $_SESSION['user_role'] = "lab";
             $_SESSION['lab_id'] = $lab_id;
+            $_SESSION['lab_name'] = $lab_name;
             header("Location: ./laboratory/");
         }else{
             echo '<script>

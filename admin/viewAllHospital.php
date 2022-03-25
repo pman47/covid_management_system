@@ -33,7 +33,7 @@
                         <div class="col">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <?php echo "<a href='viewHospitalRequest.php?hospitalid=$hospital_id' class='link-secondary fs-3 aTagHead'>$hospital_name</a>"; ?>
+                                    <?php echo "<a href='viewHospitalRequest.php?hospitalid=$hospital_id' class='link-success fs-3 aTagHead'>$hospital_name</a>"; ?>
                                 </div>
                                 <div class="col-md-6">
                                     <h6 class="card-text">+91 <?php echo $contact_no; ?></h6>

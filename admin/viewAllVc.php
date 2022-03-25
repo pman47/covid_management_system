@@ -32,7 +32,7 @@
                         <div class="col">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <?php echo "<a href='viewVcRequest.php?vcid=$vc_id' class='link-secondary fs-3 aTagHead'>$vc_name</a>"; ?>
+                                    <?php echo "<a href='viewVcRequest.php?vcid=$vc_id' class='link-success fs-3 aTagHead'>$vc_name</a>"; ?>
                                 </div>
                             </div>
                             <h5 class="card-text"><?php echo $vc_address; ?></h5>

@@ -35,8 +35,7 @@
         <div class="card mt-2 px-3 py-1 shadow">
             <div class="card-body row">
                 <div class="col">
-                    <?php echo "<h3 class='card-title'>$vc_name</h3>"; ?>
-                    <?php echo "<h5 class='card-title'>Username : $vc_username</h5>";?>
+                    <h3 class='card-title text-success'><?php echo $vc_name; ?><small class='text-muted h5'>- <?php echo $vc_username; ?></small></h3>
                     <h5 class="card-text">Address : <?php echo $vc_address; ?></h5>
                     
                     <h5 class="card-text">Pincode:
@@ -55,7 +54,7 @@
                             $age_to = $row['age_to'];
                         ?>
 
-                        <span class="badge rounded-pill bg-secondary"><?php echo $age_from . "-" . $age_to; ?></span>
+                        <span class="badge rounded-pill bg-secondary fs-6"><?php echo $age_from . "-" . $age_to; ?></span>
 
                     <?php } ?>
                     

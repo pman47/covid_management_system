@@ -1,49 +1,42 @@
 
 <div class="container">
-    <div class="row">
-        <div class="col-7">
-            <div class="card p-3 shadow">
-                <h5 class="mb-0">Testing Requests</h5>
-                <hr>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card p-3 shadow">
-                <h5 class="mb-0">Laboratory Testings</h5>
-                <hr>
-                <table class="table">
-                    <thead>
-                        <tr>
+    <h3>Testing Details</h3>
+    <div class="card mt-2 px-3 py-1 shadow">
+        <div class="card-body row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
                         <th scope="col">Testing Name</th>
                         <th scope="col">Testing Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $query = "SELECT * FROM labs_testings WHERE lab_id = '{$global_lab_id}'";
+                    $allTestings = mysqli_query($connection,$query);
+                    if(mysqli_num_rows($allTestings)==0){
+                        echo "</tbody></table> <div class='w-100 d-flex align-items-center justify-content-center' style='height:100px;'><div>No Record Found.</div></div>";
+                        // echo "<tr><td colspan='4' class='text-center'>No Record Found.</td></tr>";
+                    }else{
+                        $index = 1;
+                        while($row = mysqli_fetch_assoc($allTestings)){
+                            $testing_name = $row['testing_name'];
+                            $testing_price = $row['testing_price'];
+                            ?>
+                            
+                            <tr>
+                                <th scope="row"><?php echo $index;?></th>
+                                <td><?php echo $testing_name;?></td>
+                                <td><?php echo $testing_price;?></td>
+                            </tr>
                         <?php
-                            $query = "SELECT labs_testings.price, testing_types.tt_name FROM labs_testings INNER JOIN testing_types ON labs_testings.tt_id=testing_types.tt_id WHERE lab_id = $global_lab_id LIMIT 5";
-                            $allLabTesting = mysqli_query($connection,$query);
-                            if(mysqli_num_rows($allLabTesting)==0){
-                                echo "</tbody></table> <div class='w-100 d-flex align-items-center justify-content-center' style='height:100px;'><div>No Record Found.</div></div>";
-                                // echo "<tr><td colspan='4' class='text-center'>No Record Found.</td></tr>";
-                            }else{
-                                while($row=mysqli_fetch_array($allLabTesting)){
-                                    $price = $row['price'];
-                                    $tt_name = $row['tt_name'];
-                                    echo "
-                                        <tr>
-                                        <th scope='row'>$tt_name</th>
-                                        <td>$price</td>
-                                        </tr>
-                                    ";
-                                }
-                                echo "</tbody> </table>";
-                                echo "<div class='d-flex justify-content-end'>
-                                    <a href='lab_to_testing.php' class='card-link text-secondary'>View more ...</a>
-                                </div>";
-                            }
-                        ?>
-
-            </div>
+                        $index++;
+                        }
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
