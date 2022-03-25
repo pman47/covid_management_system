@@ -1,6 +1,9 @@
 
 <div class="container">
-    <h3>Testing Details</h3>
+    <div class="col d-flex justify-content-between">
+        <h3>Testing Details</h3>
+        <a href="lab_to_testing.php" class="card-link link-secondary px-3" style="cursor:pointer;">View All</a>
+    </div>
     <div class="card mt-2 px-3 py-1 shadow">
         <div class="card-body row">
             <table class="table">
