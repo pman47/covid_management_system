@@ -7,3 +7,5 @@
 <!-- NAVIGATION -->
 <?php include('./includes/navigation.php'); ?>
 <!-- NAVIGATION -->
+
+<?php include('./homepage.php');?>

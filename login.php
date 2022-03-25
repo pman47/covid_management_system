@@ -19,9 +19,10 @@
             $db_password = $row['password'];
         }    
         if($username === $db_username && $password === $db_password){
-            session_start();
             $_SESSION['user_role'] = "admin";
-            header("Location: ./admin/");
+            echo '<script>
+            window.location.href="admin/index.php";
+            </script>';
         }else{
             echo '<script>
             alert("Wrong username or password");

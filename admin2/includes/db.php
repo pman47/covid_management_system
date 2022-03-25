@@ -4,7 +4,7 @@
     // if($connection){
     //     echo "We are connected";
     // }
-    
+
     function confirm($result){
         if(!$result){
             global $connection;

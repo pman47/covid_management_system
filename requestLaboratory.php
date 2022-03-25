@@ -5,6 +5,24 @@
 <!-- DB Connection -->
 <?php include('./includes/db.php') ?>
 
+<script>
+
+    var check = function() {
+        if((document.getElementById('password').value === document.getElementById('confirmPassword').value) && document.getElementById('password').value == ""){
+            document.getElementById('pwdMsg').innerHTML = ' ';
+        }
+        else if (document.getElementById('password').value === document.getElementById('confirmPassword').value) {
+            document.getElementById('pwdMsg').style.color = 'green';
+            document.getElementById('pwdMsg').innerHTML = 'matching';
+            document.getElementById('submit').disabled = false;
+        } else {
+            document.getElementById('pwdMsg').style.color = 'red';
+            document.getElementById('pwdMsg').innerHTML = 'not matching';
+            document.getElementById('submit').disabled = true;
+        }
+    }
+</script>
+
 <section class="h-100 bg-light">
 <div class="container-fluid py-5">
     <div class="row d-flex justify-content-center align-items-center h-100">
