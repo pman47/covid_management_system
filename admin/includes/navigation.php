@@ -8,7 +8,7 @@
             Vaccination Centre
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item fs-5" href="#">View All VAccination Centres</a></li>
+            <li><a class="dropdown-item fs-5" href="./viewAllVc.php">View All VAccination Centres</a></li>
             <li><a class="dropdown-item fs-5" href="./vcRequests.php">Vaccination Centre Requests</a></li>
           </ul>
         </li>

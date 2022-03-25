@@ -15,7 +15,7 @@
     if(mysqli_num_rows($getAllDetails)==0){
         ?>
         <div class="card mt-4 shadow d-flex align-items-center justify-content-md-center" style="min-height:200px;">
-            <h4>No Hospital Requests Found</h4>
+            <h4>No Hospital Found</h4>
         </div>
         <?php
     }else{
