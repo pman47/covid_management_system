@@ -11,12 +11,23 @@
         echo $lab_id;
         echo $user_id;
         $query = "INSERT INTO `testing_requests`(`testing_date`, `user_id`, `lab_id`, `testing_status`) VALUES ('{$date}','{$user_id}','{$lab_id}','pending')";
-        $
+        $registerBase = mysqli_query($connection,$query);
+        confirm($registerBase);
+        $testing_id = mysqli_insert_id($connection);
         $testingIds = $_POST['testingList'];
-        for($x=0;$x<count($testingIds);$x++)
-        {
-            
-            echo "<br>";
+
+        foreach ($testingIds as $LT_id) {
+            // $LT_id
+            $query = "INSERT INTO `testing_list`(`testing_id`, `LT_id`) VALUES ('{$testing_id}','{$LT_id}')";
+            $insertOneRow = mysqli_query($connection,$query);
+        }
+        if(!$insertOneRow){
+            die("QUERY FAILED " . mysqli_error($connection));
+        }else{
+            echo '<script>
+            alert("Request Sended Successfully");
+            window.location.href="./";
+            </script>';
         }
     }
 ?>
