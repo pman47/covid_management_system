@@ -7,9 +7,9 @@
         $date = $_POST['date'];
         $lab_id = $_GET['labid'];
         $user_id = $_SESSION['user_id'];
-        echo $date;
-        echo $lab_id;
-        echo $user_id;
+        // echo $date;
+        // echo $lab_id;
+        // echo $user_id;
         $query = "INSERT INTO `testing_requests`(`testing_date`, `user_id`, `lab_id`, `testing_status`) VALUES ('{$date}','{$user_id}','{$lab_id}','pending')";
         $registerBase = mysqli_query($connection,$query);
         confirm($registerBase);

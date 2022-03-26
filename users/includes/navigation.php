@@ -31,7 +31,6 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item fs-5" href="searchForTesting.php">Search for Testings</a></li>
-            <li><a class="dropdown-item fs-5" href="#">Register For Testing</a></li>
           </ul>
         </li>
 
@@ -41,7 +40,6 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item fs-5" href="searchForHospital.php">Search for Vacancy of Beds</a></li>
-            <li><a class="dropdown-item fs-5" href="#">Register for Bed</a></li>
           </ul>
         </li>
       </ul>

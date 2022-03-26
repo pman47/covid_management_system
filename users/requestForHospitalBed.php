@@ -4,6 +4,28 @@
 
 
 <?php
+    if(isset($_POST['requestForBed'])){
+        $date = $_POST['date'];
+        $hospital_id = $_GET['hospitalid'];
+        $user_id = $_SESSION['user_id'];
+        $ward_id = $_POST['selecteWardId'];
+        // echo $date;
+        // echo $lab_id;
+        // echo $user_id;
+        $query = "INSERT INTO `bed_requests`(`request_date`, `patient_status`, `user_id`, `hospital_id`, `ward_id`) VALUES ('{$date}','pending','{$user_id}','{$hospital_id}','{$ward_id}')";
+        $registerBed = mysqli_query($connection,$query);
+        if(!$registerBed){
+            die("QUERY FAILED " . mysqli_error($connection));
+        }else{
+            echo '<script>
+            alert("Request Sended Successfully");
+            window.location.href="./";
+            </script>';
+        }
+    }
+?>
+
+<?php
     $hospital_id = $_GET['hospitalid'];
     $query = "SELECT * FROM hospitals INNER JOIN pincode ON hospitals.hospital_pincode = pincode.pincode INNER JOIN district ON pincode.district_id = district.district_id WHERE hospitals.hospital_id = '{$hospital_id}'";
     $getDetails = mysqli_query($connection,$query);
@@ -21,9 +43,6 @@
     <div class="container mt-4">
         <div class="d-flex justify-content-between">
             <h3>Hospital Details</h3>
-            <div class="">
-                <a href="requestForHospitalBed.php?hospitalid=<?php echo $hospital_id;?>" class="btn btn-outline-primary rounded-pill px-4 mx-3">Request For Hospital Bed</a>
-            </div>
         </div>
         <div class="card mt-2 px-3 py-1 shadow">
             <div class="card-body row">
@@ -85,8 +104,16 @@
         </div>
     </div>
 
+
+<form action="requestForHospitalBed.php?hospitalid=<?php echo $hospital_id;?>" method="post">
     <div class="container mt-4">
-        <h3>Ward Details</h3>
+        <div class="d-flex justify-content-between">
+                <h3>Ward Details</h3>
+                <div class="d-flex">
+                    <input type="date" class="form-control" name="date" required>
+                    <input type="submit" name="requestForBed" onClick="javascript: return confirm('Are You Sure?');" value="Send Bed Request" class="btn btn-success rounded-pill px-4 mx-3"></label>
+                </div>
+            </div>
         <div class="card mt-2 px-3 py-1 shadow">
             <div class="card-body row">
                 <table class="table">
@@ -96,6 +123,7 @@
                             <th scope="col">Ward Name</th>
                             <th scope="col">Total Wards</th>
                             <th scope="col">Available Wards</th>
+                            <th scope="col">Select Ward</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -105,6 +133,7 @@
                         $index = 1;
                         while($row = mysqli_fetch_assoc($allWardDetails)){
                             $ward_name = $row['ward_name'];
+                            $ward_id = $row['ward_id'];
                             $Total_beds = $row['Total_beds'];
                             $Available_beds = $row['Available_beds'];
                             ?>
@@ -114,6 +143,7 @@
                                 <td><?php echo $ward_name;?></td>
                                 <td><?php echo $Total_beds;?></td>
                                 <td><?php echo $Available_beds;?></td>
+                                <td><input type="radio" name="selecteWardId" value="<?php echo $ward_id;?>"> </td>
                             </tr>
                         <?php
                         $index++;
@@ -123,4 +153,8 @@
                 </table>
             </div>
         </div>
+        <div class="d-flex justify-content-between">
+            <div class=""></div>
+        </div>
     </div>
+</form>
