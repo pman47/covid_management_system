@@ -100,11 +100,14 @@
 
         
         if($mobileNo === $db_mobileNo && $password === $db_password){
-            session_start();
             $_SESSION['user_role'] = "user";
-            $loginStatus = true;
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['user_name'] = $row['user_name'];
             // $_SESSION['username'] = $db_username;
-            // header("Location: ./");
+            echo '<script>
+            alert("Login Successfully");
+            window.location.href="users/index.php";
+            </script>';
         }else{
             echo '<script>
             alert("Wrong mobile number or password");
@@ -136,16 +139,16 @@
 
                 <?php if($_GET["user_role"] == 'admin' || $_GET["user_role"] == 'lab' || $_GET["user_role"] == 'hospital'){ ?>
                 <label class="form-label fs-4" for="mobileNo">Username</label>
-                <input class="form-control mb-3 fs-4" type="text" name="username" required>
+                <input class="form-control mb-3 fs-4" type="text" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username'];?>" required>
                 <?php } ?>
                 
                 <?php if($_GET["user_role"] == 'user'){ ?>
                     <label class="form-label fs-4" for="mobileNo">Mobile No</label>
-                    <input class="form-control mb-3 fs-4" type="tel" name="mobileNo" id="mobileNo" pattern="[1-9]{1}[0-9]{9}" required>
+                    <input class="form-control mb-3 fs-4" type="tel" name="mobileNo" id="mobileNo" pattern="[1-9]{1}[0-9]{9}" value="<?php if(isset($_POST['mobileNo'])) echo $_POST['mobileNo'];?>" required>
                     <?php } ?>
                 
                 <label class="form-label fs-4" for="password">Password</label>
-                <input class="form-control mb-3 fs-4" type="password" name="password" id="password" required>
+                <input class="form-control mb-3 fs-4" type="password" value="<?php if(isset($_POST['password'])) echo $_POST['password'];?>" name="password" id="password" required>
                 
                 <?php
                 if(!$loginStatus){

@@ -34,7 +34,7 @@
             Testing
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item fs-5" href="search.php?for=testing">Search for Testings</a></li>
+            <li><a class="dropdown-item fs-5" href="searchForTesting.php">Search for Testings</a></li>
             <li><a class="dropdown-item fs-5" href="requestLaboratory.php">Request New Laboratory</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
@@ -48,7 +48,7 @@
             Vacancy Of Beds
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item fs-5" href="search.php?for=hospital">Search for Vacancy of Beds</a></li>
+            <li><a class="dropdown-item fs-5" href="searchForHospital.php">Search for Vacancy of Beds</a></li>
             <li><a class="dropdown-item fs-5" href="requestHospital.php">Request new Hospital</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>

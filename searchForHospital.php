@@ -1,3 +1,6 @@
+<?php include('./includes/header.php'); ?>
+<?php include('./includes/navigation.php'); ?>
+<?php include('./includes/db.php');?>
 <script>
 $(document).ready(function() {
 	$('#selectedStateId').on('change', function() {
@@ -20,10 +23,11 @@ $(document).ready(function() {
 <div class="container pt-5 pb-3">
     <div class="row d-flex justify-content-md-center">
         <div class="btn-group w-25" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="searchBy" id="byDistrict" autocomplete="off" checked>
+            <input type="radio" class="btn-check" name="searchBy" id="byDistrict" autocomplete="off" checked disabled>
             <label class="btn btn-outline-secondary rounded-pill fs-5 mx-1" for="byDistrict">By District</label>
-            <input type="radio" class="btn-check" name="searchBy" id="byPincode" autocomplete="off">
-            <label class="btn btn-outline-secondary rounded-pill fs-5 mx-1" for="byPincode">By Pincode</label>
+            <a href="./HospitalUsingPincode.php">
+                <label class="btn btn-outline-secondary rounded-pill fs-5 px-4 mx-1" for="byPincode">By Pincode</label>
+            </a>
         </div>
     </div>
     <br>
@@ -72,6 +76,7 @@ $(document).ready(function() {
                 $hospital_pincode = $row['hospital_pincode'];
                 $area_name = $row['area_name'];
                 $district_name = $row['district_name'];
+                $hospital_id = $row['hospital_id'];
                 ?>
 
                 <div class="card mt-2 px-3 py-1 shadow">
@@ -79,7 +84,7 @@ $(document).ready(function() {
                         <div class="col">
                             <div class="row">
                                 <div class="col">
-                                    <?php echo "<h4 class='card-title'>$hospital_name</h4>"; ?>
+                                    <?php echo "<a target='_blank' href='viewHospital.php?hospitalid=$hospital_id' class='link-success fs-3 aTagHead'>$hospital_name</a>"; ?>
                                 </div>
                                 <div class="col">
                                     <h6 class="card-text">+91 <?php echo $contact_no; ?></h6>

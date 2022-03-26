@@ -18,15 +18,17 @@
         $bloodGroup = $_POST['bloodGroup'];
         $aadharNo = $_POST['aadharNo'];
 
-        $query = "SELECT * FROM users WHERE user_aadhar_no = $aadharNo";
-        $checkAadharNo = mysqli_query($connection,$query);
-        confirm($checkAadharNo);
+        $query = "INSERT INTO `users`(`password`, `user_name`, `user_aadhar_no`, `mobile_no`, `user_email`, `user_dob`, `user_gender`, `user_blood_group`) VALUES ('{$password}','{$name}','{$aadharNo}','{$mobileNo}','{$email}','{$dob}','{$gender}','{$bloodGroup}')";
 
-        $count = mysqli_num_rows($checkAadharNo);
-        if($count>=1){
-            $aadharNumberExist = true;
+        $register = mysqli_query($connection,$query);
+        if(!$register){
+            die("QUERY FAILED " . mysqli_error($connection));
+        }else{
+            echo '<script>
+            alert("Registration Successfull");
+            window.location.href="login.php?user_role=user";
+            </script>';
         }
-
 
 
         // $filename = $_FILES["aadharDocumentImage"]["name"];
@@ -48,10 +50,6 @@
         // confirm($register);
     }
 
-
-
-
-
 ?>
 
 <script>
@@ -70,8 +68,23 @@
             document.getElementById('submit').disabled = true;
         }
     }
-    function Hi(){
-        console.log("Hi");
+
+    function checkMobileNo(mobileNo){
+        const req = new XMLHttpRequest();
+        req.onload = function(){
+            document.getElementById("mobileExist").innerHTML = this.responseText;
+        }
+        req.open("GET","check.php?type=mobileNo&mobileNo="+mobileNo);
+        req.send();
+    }
+
+    function checkAadharNo(aadharNo){
+        const req = new XMLHttpRequest();
+        req.onload = function(){
+            document.getElementById("aadharExist").innerHTML = this.responseText;
+        }
+        req.open("GET","check.php?type=aadharNo&aadharNo="+aadharNo);
+        req.send();
     }
 </script>
 
@@ -89,8 +102,8 @@
                     <label class="form-label fs-5" for="name">Name</label>
                     <input class="form-control fs-4 mb-3" type="text" name="name" id="name" required>
 
-                    <label class="form-label fs-5" for="mobileNo">Mobile No</label>
-                    <input class="form-control fs-4 mb-3" type="tel" name="mobileNo" id="mobileNo" pattern="[1-9]{1}[0-9]{9}" required>
+                    <label class="form-label fs-5" for="mobileNo">Mobile No</label><span id="mobileExist" style="color:red" class="fs-6 alert alert-light p-0 m-0" role="alert"></span>
+                    <input class="form-control fs-4 mb-3" type="tel" name="mobileNo" id="mobileNo" onkeyup="checkMobileNo(this.value)" pattern="[1-9]{1}[0-9]{9}" required>
                     
                     <label class="form-label fs-5" for="email">Email</label>
                     <input class="form-control fs-4 mb-3" type="email" name="email" id="email" required>
@@ -123,11 +136,11 @@
                         <option value="AB-">AB-</option>
                     </select>
                     <br>
-                    <label for="aadharNo" class="form-label fs-5">Aadhar Card No</label>
-                    <input type="text" class="form-control fs-4 mb-3" name="aadharNo" id="aadharNo" pattern="[0-9]{12}" onchange='Hi();' required>
+                    <label for="aadharNo" class="form-label fs-5">Aadhar Card No</label><span id="aadharExist" style="color:red" class="fs-6 alert alert-light p-0 m-0" role="alert"></span>
+                    <input type="text" class="form-control fs-4 mb-3" name="aadharNo" id="aadharNo" pattern="[0-9]{12}" onkeyup="checkAadharNo(this.value)" required>
 
-                    <label for="aadharDocName" class="form-label fs-5">Aadhar Card Photo</label>
-                    <input type="file" class="form-control fs-4 mb-3" name="aadharDocumentImage" id="aadharDocumentImage" accept="image/png, image/jpeg" required>
+                    <!-- <label for="aadharDocName" class="form-label fs-5">Aadhar Card Photo</label>
+                    <input type="file" class="form-control fs-4 mb-3" name="aadharDocumentImage" id="aadharDocumentImage" accept="image/png, image/jpeg" required> -->
 
                     <button type="submit" class="btn btn-primary w-100 mt-3 mb-0" name="submit" id="submit">Register</button>
                 </form>
