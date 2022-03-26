@@ -96,13 +96,15 @@
         while($row = mysqli_fetch_array($login)){
             $db_mobileNo = $row['mobile_no'];
             $db_password = $row['password'];
+            $user_name = $row['user_name'];
+            $user_id = $row['user_id'];
         }
 
         
         if($mobileNo === $db_mobileNo && $password === $db_password){
             $_SESSION['user_role'] = "user";
-            $_SESSION['user_id'] = $row['user_id'];
-            $_SESSION['user_name'] = $row['user_name'];
+            $_SESSION['user_id'] = $user_id;
+            $_SESSION['user_name'] = $user_name;
             // $_SESSION['username'] = $db_username;
             echo '<script>
             alert("Login Successfully");
