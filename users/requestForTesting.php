@@ -80,7 +80,7 @@
                 <h3>Select Testings</h3>
                 <div class="d-flex">
                     <input type="date" class="form-control" name="date" required>
-                    <input type="submit" name="requestForTesting" value="Send Testing Request" class="btn btn-success rounded-pill px-4 mx-3"></label>
+                    <input type="submit" name="requestForTesting" onClick="javascript: return confirm('Are You Sure?');" value="Send Testing Request" class="btn btn-success rounded-pill px-4 mx-3"></label>
                 </div>
             </div>
             <div class="card mt-2 px-3 py-1 shadow">
