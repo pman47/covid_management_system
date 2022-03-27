@@ -33,28 +33,25 @@
 <!-- Page Content -->
 
 <div id="msg"></div>
-
-<div class="Container">
-    <div class="tableHeader">
-        <h1 class="page-header">Age Group</h1>
-        <hr>
-        <div class="tableControls">
-            <!-- <input type="text" placeholder="Search"> -->
-            <form action="" method="post">
-                <input type="number" name="from" placeholder="From" min="0" required>
-                <input type="number" name="to" placeholder="To" max="120" required>
-                <button name="addAgeGroup" class="Btn"><span>&#43;</span> Add</button>
+    <div class="container mt-4">
+        <div class="col d-flex justify-content-between align-items-center">
+            <h3>Age Group</h3>
+            <form action="" method="post" class="d-flex align-items-center">
+                <input class="form-control" type="number" name="from" placeholder="From" min="0" required>
+                <input class="form-control mx-2" type="number" name="to" placeholder="To" max="120" required>
+                <button class="btn btn-primary" name="addAgeGroup">Add</button>
             </form>
+
         </div>
-    </div>
-    
+    <div class="card mt-2 px-3 py-1 shadow">
+            <div class="card-body row">
     <div class="tableBody">
-            <table>
+            <table class="table">
                 <thead>
                     <tr>
-                        <th>FROM</th>
-                        <th>TO</th>
-                        <th colspan="2">COMMANDS</th>
+                        <th scope="col">FROM</th>
+                        <th scope="col">TO</th>
+                        <th scope="col" colspan="2">COMMANDS</th>
                     </tr>
                 </thead>
                 <tbody>   
@@ -76,8 +73,10 @@
                 </tbody>
             </table>
     </div>
-    <div class="tableFooter">
-        <hr>
+    </div>
+    </div>
+    </div>
+    <div class="container">
         <form action="" method="post">
             <?php
             if(isset($_GET['ageGroupEdit'])){
@@ -90,12 +89,20 @@
                     $age_to = $row['age_to'];
                     ?>
 
-                    <div>
-                        <label for="cat-title">Edit Age Group</label>
-                        <input value="<?php if(isset($age_from)){echo $age_from;} ?>" type="number" name="age_from" min="0" required>
-                        <input value="<?php if(isset($age_to)){echo $age_to;} ?>" type="number" name="age_to" max="120" required>
+                    <div class="row g-3 justify-content-end align-items-center mt-3 fs-5">
+                        <div class="col-auto">
+                            <label for="form-label">Edit Age Group</label>
+                        </div>
+                        <div class="col-auto">
+                            <input class="form-control" value="<?php if(isset($age_from)){echo $age_from;} ?>" type="number" name="age_from" min="0" required>
+                        </div>
+                        <div class="col-auto">
+                            <input class="form-control" value="<?php if(isset($age_to)){echo $age_to;} ?>" type="number" name="age_to" max="120" required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="submit" name="update_age_group" class="btn btn-primary" value="Update Age Group">
+                        </div>
                     </div>
-                    <input type="submit" name="update_age_group" class="Btn" value="Update Age Group">
 
                 <?php }
             } 

@@ -50,14 +50,11 @@ ob_start();
 
 <div id="msg"></div>
 
-<div class="Container">
-    <div class="tableHeader">
-        <h1 class="page-header">District</h1>
-        <hr>
-        <div class="tableControls">
-            <!-- <input type="text" placeholder="Search"> -->
-            <form action="" method="post">
-                <select name="stateId">
+<div class="container mt-4">
+        <div class="col d-flex justify-content-between align-items-center">
+        <h3>District</h3>
+            <form action="" method="post" class="d-flex align-items-center">
+                <select class="form-control fs-5" name="stateId">
                     <?php
                         $query = "SELECT * FROM state";
                         $viewAllState = mysqli_query($connection,$query);
@@ -68,20 +65,21 @@ ob_start();
                         }
                     ?>
                 </select>
-                <input type="text" name="districtName" placeholder="Enter District Name" required>
-                <button name="addDistrict" class="Btn"><span>&#43;</span> Add</button>
+                <input class="form-control mx-3 fs-5" type="text" name="districtName" placeholder="Enter District Name" required>
+                <button name="addDistrict" class="btn fs-5 btn-primary">Add</button>
             </form>
-        </div>
     </div>
     
+    <div class="card mt-2 px-3 py-1 shadow">
+            <div class="card-body row">
     <div class="tableBody">
-            <table>
+            <table class="table fs-5">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>DISTRICT NAME</th>
-                        <th>STATE NAME</th>
-                        <th colspan="2">COMMANDS</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">DISTRICT NAME</th>
+                        <th scope="col">STATE NAME</th>
+                        <th scope="col" colspan="2">COMMANDS</th>
                     </tr>
                 </thead>
                 <tbody>   
@@ -112,6 +110,9 @@ ob_start();
             </tbody>
             </table>
     </div>
+    </div>
+    </div>
+
     <div class="tableFooter">
         <hr>
         <form action="" method="post">
@@ -127,26 +128,33 @@ ob_start();
                     $stateId = $row['state_id'];
                     ?>
 
-                    <div>
-                        <label for="cat-title">Edit District</label>
-                        <select name="stateId" value>
-                            <?php
-                                $query = "SELECT * FROM state";
-                                $viewAllState = mysqli_query($connection,$query);
-                                while($row = mysqli_fetch_assoc($viewAllState)){
-                                    $state_id = $row['state_id'];
-                                    $state_name = $row['state_name'];
-                                    if($state_id == $stateId){
-                                        echo "<option value='$state_id' selected>$state_name</option>";
-                                    }else
-                                    echo "<option value='$state_id'>$state_name</option>";
-                                }
-                            ?>
-                        </select>
-
-                        <input value="<?php if(isset($district_name)){echo $district_name;} ?>" type="text" name="district_name">
+                    <div class="row g-3 justify-content-end align-items-center mt-3 fs-5">
+                        <div class="col-auto">
+                            <label class="form-label fs-5" for="cat-title">Edit District</label>
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-control fs-5" name="stateId" value>
+                                <?php
+                                    $query = "SELECT * FROM state";
+                                    $viewAllState = mysqli_query($connection,$query);
+                                    while($row = mysqli_fetch_assoc($viewAllState)){
+                                        $state_id = $row['state_id'];
+                                        $state_name = $row['state_name'];
+                                        if($state_id == $stateId){
+                                            echo "<option value='$state_id' selected>$state_name</option>";
+                                        }else
+                                        echo "<option value='$state_id'>$state_name</option>";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <input class="form-control fs-5" value="<?php if(isset($district_name)){echo $district_name;} ?>" type="text" name="district_name">
+                        </div>
+                        <div class="col-auto">
+                            <input type="submit" name="update_district" class="btn btn-primary fs-5" value="Update District">
+                        </div>
                     </div>
-                    <input type="submit" name="update_district" class="Btn" value="Update District">
 
                 <?php }
             } 
@@ -169,4 +177,9 @@ ob_start();
     </div>
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
 <?php ob_end_flush();?>

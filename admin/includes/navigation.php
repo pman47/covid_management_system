@@ -32,6 +32,19 @@
             <li><a class="dropdown-item fs-5" href="./hospitalRequests.php">Hospitals Requests</a></li>
           </ul>
         </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fs-4" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Others
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item fs-5" href="./ageGroup.php">Age Group</a></li>
+            <li><a class="dropdown-item fs-5" href="./district.php">District</a></li>
+            <li><a class="dropdown-item fs-5" href="./pincode.php">Pincode</a></li>
+            <li><a class="dropdown-item fs-5" href="./state.php">State</a></li>
+            <li><a class="dropdown-item fs-5" href="./timeSlot.php">Time Slots</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
 
