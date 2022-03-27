@@ -49,7 +49,7 @@
 
 <div class="container pt-4">
     <div class="d-flex justify-content-between mb-2">
-        <h5>Lab Testing Requests:</h5>
+        <h5>Bed Requests:</h5>
     </div>
 
     <!-- Testing table -->
