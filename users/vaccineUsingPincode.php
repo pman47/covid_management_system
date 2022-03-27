@@ -68,6 +68,7 @@ $(document).ready(function() {
                 $vaccine_name = $row['vaccine_name'];
                 $available_vaccine_stock = $row['available_vaccine_stock'];
                 $vaccine_price = $row['vaccine_price'];
+                $stock_count_id = $row['stock_count_id'];
                 ?>
 
                 <div class="card mt-2 px-3 py-1 shadow">
@@ -111,6 +112,9 @@ $(document).ready(function() {
                             <?php }else{ ?>
                                 <h5>Price : <?php echo $vaccine_price ?></h5>
                             <?php } ?>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="requestForVaccine.php?stock_count_id=<?php echo $stock_count_id;?>&date=<?php echo $date;?>" class="btn btn-outline-danger rounded-pill px-4">Request For Vaccination</a>
                         </div>
                     </div>
                 </div>

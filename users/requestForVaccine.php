@@ -72,6 +72,18 @@ if(isset($_POST['sendRequest'])){
                     }
                 }
             }
+        }else{
+            $query = "INSERT INTO `vaccination_requests`(`vaccination_date`, `dose_no`, `vaccination_status`, `user_id`, `member_id`, `vc_id`, `vaccine_type`, `time_slot`) VALUES ('{$date}','{$current_dose_no}','pending','{$global_user_id}','0','{$vc_id}','{$vaccine_id}','{$timeSlotId}')";
+
+            $insertRow = mysqli_query($connection,$query);
+            if(!$insertRow){
+                die("QUERY FAILED " . mysqli_error($connection));
+            }else{
+                echo '<script>
+                alert("Successfull Registration of Vaccination");
+                window.location.href="./";
+                </script>';
+            }
         }
 
     }
@@ -168,9 +180,6 @@ if(isset($_GET['stock_count_id'])){
 
                     <input type="radio" class="btn-check" name="timeSlots" value="<?php echo $time_slot_id;?>" id="<?php echo $time_slot_id;?>" autocomplete="off">
                     <label class="btn btn-outline-success" for="<?php echo $time_slot_id;?>"><?php echo $time_from . " - " . $time_to; ?></label>
-
-                    <!-- <input type="radio" class="btn-check" value="<?php echo $time_slot_id;?>" name="timeSlots" required>
-                    <label class="btn btn-outline-success"><?php echo $time_from . " - " . $time_to; ?></label> -->
 
                 <?php } ?>
         </div>
