@@ -5,4 +5,4 @@
 <?php include('./includes/profile_card.php');?>
 <br>
 
-<?php include('./includes/hospital_dashboard_details.php');?>
+<?php include('./includes/vc_dashboard_details.php');?>

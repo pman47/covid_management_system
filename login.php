@@ -33,6 +33,32 @@
         }
     }
 
+    if(isset($_POST['vclogin'])){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $query = "SELECT * FROM vaccination_centres WHERE vc_username = '{$username}'";
+        $vc_login = mysqli_query($connection,$query);
+        confirm($vc_login);
+        while($row = mysqli_fetch_array($vc_login)){
+            $db_username = $row['vc_username'];
+            $db_password = $row['vc_password'];
+            $vc_id = $row['vc_id'];
+            $vc_name = $row['vc_name'];
+        }    
+        if($username === $db_username && $password === $db_password){
+            $_SESSION['user_role'] = "vc";
+            $_SESSION['vc_id'] = $vc_id;
+            $_SESSION['vc_name'] = $vc_name;
+            header("Location: ./vaccination_centre/");
+        }else{
+            echo '<script>
+            alert("Wrong username or password");
+            window.location.href="login.php?user_role=vc";
+            </script>';
+            // header("Location: login.php?user_role=admin");
+        }
+    }
+    
     if(isset($_POST['lablogin'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -139,7 +165,7 @@
                     echo "<h1>Login</h1>";
                 } ?>
 
-                <?php if($_GET["user_role"] == 'admin' || $_GET["user_role"] == 'lab' || $_GET["user_role"] == 'hospital'){ ?>
+                <?php if($_GET["user_role"] == 'admin' || $_GET["user_role"] == 'lab' || $_GET["user_role"] == 'hospital' || $_GET["user_role"] == 'vc'){ ?>
                 <label class="form-label fs-4" for="mobileNo">Username</label>
                 <input class="form-control mb-3 fs-4" type="text" name="username" value="<?php if(isset($_POST['username'])) echo $_POST['username'];?>" required>
                 <?php } ?>
@@ -164,6 +190,7 @@
                 if($_GET["user_role"] == 'admin') echo 'adminLogin';
                 else if($_GET["user_role"] == 'lab') echo 'lablogin';
                 else if($_GET["user_role"] == 'hospital') echo 'hospitallogin';
+                else if($_GET["user_role"] == 'vc') echo 'vclogin';
                 else echo 'userLogin';
                 ?>" id="submit" class="btn btn-primary btn-lg btn-block w-100">Login</button>
 
