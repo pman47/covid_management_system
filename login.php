@@ -49,6 +49,7 @@
             $_SESSION['user_role'] = "vc";
             $_SESSION['vc_id'] = $vc_id;
             $_SESSION['vc_name'] = $vc_name;
+            $_SESSION['vc_name'] = $vc_name;
             header("Location: ./vaccination_centre/");
         }else{
             echo '<script>

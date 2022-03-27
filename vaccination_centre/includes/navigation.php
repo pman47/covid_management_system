@@ -3,12 +3,6 @@
     <a class="navbar-brand mb-0 h1 fs-4" href="./"><?php echo $global_vc_name;?></a>
 
     <div class="d-flex">
-
-      <ul class="navbar-nav mx-3">
-        <li class="nav-item">
-          <a class="nav-link fs-5" href="./lab_to_testing.php">Labs Testing Details</a>
-        </li>
-      </ul>
       <ul class="navbar-nav mx-3">
         <li class="nav-item">
           <a class="nav-link fs-5 position-relative" href="./testingRequests.php">Testing Requests</a>
