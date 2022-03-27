@@ -63,8 +63,11 @@ if(isset($_POST['sendRequest'])){
                         if(!$insertRow){
                             die("QUERY FAILED " . mysqli_error($connection));
                         }else{
-                            $query = "SELECT available_vaccine_stock FROM vaccine_stock WHERE stock_count_id = '{$stock_count_id}'";
-                            $AVS = mysqli_query($connection,$query);
+                            $query = "SELECT * FROM vaccine_stock WHERE stock_count_id = '{$stock_count_id}'";
+                            $getIt = mysqli_query($connection,$query);
+                            while($row = mysqli_fetch_assoc($getIt)){
+                                $AVS = $row['available_vaccine_stock'];
+                            }
                             $AVS = $AVS - 1;
                             $query="UPDATE `vaccine_stock` SET `available_vaccine_stock`='{$AVS}' WHERE stock_count_id = '{$stock_count_id}'";
                             $update = mysqli_query($connection,$query);
