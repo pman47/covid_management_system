@@ -51,7 +51,7 @@
               <?php echo $_SESSION['user_name'];?>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item fs-5" href="#">Profile</a></li>
+              <li><a class="dropdown-item fs-5" href="./profile.php">Profile</a></li>
               <li><hr class="dropdown-divider"></li>
               <li>
                 <a class="dropdown-item fs-5" href="./includes/logout.php">Logout</a>
