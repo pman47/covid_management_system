@@ -36,6 +36,17 @@
                     ?>
                 </h6>
 
+                <h5 class="card-text">Age Groups : </h5>
+                <?php
+                    $query = "SELECT * FROM vc_age_group INNER JOIN age_group ON vc_age_group.age_group_id = age_group.age_group_id WHERE vc_id = '$global_vc_id'";
+                    $getAgeGroups = mysqli_query($connection,$query);
+                    while($row = mysqli_fetch_assoc($getAgeGroups)){
+                        $age_from = $row['age_from'];
+                        $age_to = $row['age_to'];
+                        echo "<span class='badge bg-secondary mx-1'> " .$age_from . "-" . $age_to . "</span>";
+                    }
+                ?>
+
             </div>
             <div class="col">
                 <h6 class="card-text mb-1">Status</h6>

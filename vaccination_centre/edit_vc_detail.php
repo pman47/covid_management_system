@@ -108,6 +108,29 @@
                                 <label class="btn btn-outline-danger" for="btnradio4">Paid</label>
                             </div>
                         </div>
+                        <br>
+                        <div class="col-md-12">
+                            <label for="name" class="form-label">Age Group</label>
+                            <?php
+                                $query = "SELECT * FROM age_group";
+                                $getAllAgeGroup = mysqli_query($connection,$query);
+                                while($row=mysqli_fetch_assoc($getAllAgeGroup)){
+                                    $age_group_id = $row['age_group_id'];
+                                    $age_from = $row['age_from'];
+                                    $age_to = $row['age_to'];
+                                    $query = "SELECT * FROM vc_age_group WHERE age_group_id = $age_group_id AND vc_id = $global_vc_id";
+                                    $checkIfExist = mysqli_query($connection,$query);
+                                    $total = mysqli_num_rows($checkIfExist);
+                                ?>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="updatedCheckBox[]" value="<?php echo $age_group_id;?>" id="flexCheckDefault" <?php if($total>0) echo 'checked'; ?> >
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        <?php echo $age_from . " - " . $age_to;?>
+                                    </label>
+                                </div>
+                            <?php } ?>
+                        </div>
+
 
                         <div class="col-12 mt-5">
                             <button type="submit" name="editVc" class="btn btn-outline-dark w-100" style="border-radius: 25px">Update</button>
@@ -121,13 +144,21 @@
 
 <?php
     if(isset($_POST['editVc'])){
-        $vc_username = $_POST["updatedUsername"];
         $vc_password = $_POST["updatedPassword"];
         $vc_name = $_POST["updatedName"];
         $vc_address = $_POST["updatedAddress"];
         $vc_costType = $_POST["updatedCostType"];
         $vc_pincode = $_POST["updatedPincode"];
         $vc_status = $_POST["updatedStatus"];
+        $vc_ageGroup = $_POST['updatedCheckBox'];
+        $query = "DELETE FROM vc_age_group WHERE vc_id = '{$global_vc_id}'";
+        $deleteAgeGroups = mysqli_query($connection,$query);
+        
+        foreach ($vc_ageGroup as $age_id) {
+            $query = "INSERT INTO vc_age_group(`vc_id`, `age_group_id`) VALUES ('{$global_vc_id}','{$age_id}')";
+            $add_age_group = mysqli_query($connection,$query);
+            confirm($add_age_group);
+        }
 
         $query = "UPDATE vaccination_centres SET vc_name = '{$vc_name}',vc_password = '{$vc_password}',vc_address = '{$vc_address}',vc_pincode = '{$vc_pincode}',vc_cost_type = '{$vc_costType}',vc_status='{$vc_status}' WHERE vc_id = {$vc_id}";
         $update_query = mysqli_query($connection,$query);
