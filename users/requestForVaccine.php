@@ -21,8 +21,7 @@ if(isset($_POST['sendRequest'])){
                 window.location.href="./";
                 </script>';
     }else{
-
-        $query = "SELECT * FROM vaccination_requests WHERE dose_no='1' AND user_id='{$global_user_id}' AND vaccination_status='completed'";
+        $query = "SELECT * FROM vaccination_requests WHERE dose_no='1' AND user_id='{$global_user_id}' AND vaccination_status='accepted'";
         $getResult = mysqli_query($connection,$query);
         $count = mysqli_num_rows($getResult);
         if($count == 1){
@@ -50,7 +49,7 @@ if(isset($_POST['sendRequest'])){
                             </script>';
                 }else{
 
-                    $query = "SELECT * FROM vaccination_requests WHERE dose_no='2' AND user_id='{$global_user_id}' AND vaccination_status='completed'";
+                    $query = "SELECT * FROM vaccination_requests WHERE dose_no='2' AND user_id='{$global_user_id}' AND vaccination_status='accepted'";
                     $getResult = mysqli_query($connection,$query);
                     if(mysqli_num_rows($getResult)>=1){
                         echo '<script>
@@ -64,6 +63,13 @@ if(isset($_POST['sendRequest'])){
                         if(!$insertRow){
                             die("QUERY FAILED " . mysqli_error($connection));
                         }else{
+                            $query = "SELECT available_vaccine_stock FROM vaccine_stock WHERE stock_count_id = '{$stock_count_id}'";
+                            $AVS = mysqli_query($connection,$query);
+                            $AVS = $AVS - 1;
+                            $query="UPDATE `vaccine_stock` SET `available_vaccine_stock`='{$AVS}' WHERE stock_count_id = '{$stock_count_id}'";
+                            $update = mysqli_query($connection,$query);
+                            if(!$update)
+                                die("QUERY FAILED " . mysqli_error($connection));
                             echo '<script>
                             alert("Successfull Registration of Vaccination");
                             window.location.href="./";
@@ -79,6 +85,16 @@ if(isset($_POST['sendRequest'])){
             if(!$insertRow){
                 die("QUERY FAILED " . mysqli_error($connection));
             }else{
+                $query = "SELECT * FROM vaccine_stock WHERE stock_count_id = '{$stock_count_id}'";
+                $getIt = mysqli_query($connection,$query);
+                while($row = mysqli_fetch_assoc($getIt)){
+                    $AVS = $row['available_vaccine_stock'];
+                }
+                $AVS = $AVS - 1;
+                $query="UPDATE `vaccine_stock` SET `available_vaccine_stock`='{$AVS}' WHERE stock_count_id = '{$stock_count_id}'";
+                $update = mysqli_query($connection,$query);
+                if(!$update)
+                    die("QUERY FAILED " . mysqli_error($connection));
                 echo '<script>
                 alert("Successfull Registration of Vaccination");
                 window.location.href="./";

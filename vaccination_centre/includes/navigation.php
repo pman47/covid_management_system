@@ -5,7 +5,7 @@
     <div class="d-flex">
       <ul class="navbar-nav mx-3">
         <li class="nav-item">
-          <a class="nav-link fs-5 position-relative" href="./testingRequests.php">Testing Requests</a>
+          <a class="nav-link fs-5 position-relative" href="./vaccination_requests.php">Vaccination Requests</a>
         </ul>
       </li>
     </div>
