@@ -16,3 +16,6 @@ session_start();
   <title>Covid Management System</title>
 </head>
 <body class="bg-light">
+<?php
+  $global_user_id = $_SESSION['user_id'];
+?>
