@@ -23,11 +23,11 @@ $(document).ready(function() {
 <div class="container pt-5 pb-3">
     <div class="row d-flex justify-content-md-center">
         <div class="btn-group w-25" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="searchBy" id="byDistrict" autocomplete="off" checked disabled>
-            <label class="btn btn-outline-secondary rounded-pill fs-5 mx-1" for="byDistrict">By District</label>
-            <a href="./vaccineUsingPincode.php">
-                <label class="btn btn-outline-secondary rounded-pill fs-5 px-4 mx-1" for="byPincode">By Pincode</label>
+            <a href="./searchForVaccine.php">
+                <label class="btn btn-outline-secondary rounded-pill fs-5 px-4 mx-1" for="byPincode">By District</label>
             </a>
+            <input type="radio" class="btn-check" name="searchBy" id="byDistrict" autocomplete="off" checked disabled>
+            <label class="btn btn-outline-secondary rounded-pill fs-5 mx-1" for="byDistrict">By Pincode</label>
         </div>
     </div>
     <br>
@@ -35,22 +35,7 @@ $(document).ready(function() {
         <div class="col">
             <form class="justify-content-md-center d-flex" action="" id="form" method="post">
                 <input type="date" class="form-control w-25 mx-1 rounded-pill px-4 fs-5" id="selectDate" name="selectedDate" required>
-                <select class="form-select w-25 mx-1 rounded-pill px-4 fs-5" name="stateId" id="selectedStateId">
-                    <option value="">Select State</option>
-                    <?php
-                        $query = "SELECT * FROM state";
-                        $viewAllState = mysqli_query($connection,$query);
-                        while($row = mysqli_fetch_assoc($viewAllState)){
-                            $state_id = $row['state_id'];
-                            $state_name = $row['state_name'];
-                            echo "<option value='$state_id'>$state_name</option>";
-                        }
-                    ?>
-                </select>
-
-                <select class="form-select w-25 mx-1 rounded-pill px-4 fs-5" name="districtId" id="districts">
-                    <option value="">Select District</option>
-                </select>
+                <input type="text" class="form-control w-25 px-4 fs-5 rounded-pill" name="pincode" id="pincode" placeholder="Enter Pincode" required>
                 <button type="submit" name="searchTesting" class="btn btn-secondary btn-lg px-5 rounded-pill mx-2">Search</button>
             </form>
         </div>
@@ -60,10 +45,9 @@ $(document).ready(function() {
 <div class="container">
 <?php
     if(isset($_POST["searchTesting"])){
-        $districtId = isset($_POST["districtId"])?$_POST["districtId"]:"";
+        $pincode = $_POST["pincode"];
         $date = $_POST['selectedDate'];
-        // $query = "SELECT * FROM vaccination_centres INNER JOIN pincode ON vaccination_centres.vc_pincode = pincode.pincode INNER JOIN district ON pincode.district_id = district.district_id WHERE vaccination_centres.vc_status = 'open' AND district.district_id = '{$districtId}'";
-        $query = "SELECT * FROM vaccination_centres INNER JOIN pincode ON vaccination_centres.vc_pincode = pincode.pincode INNER JOIN district ON pincode.district_id = district.district_id INNER JOIN vaccine_stock ON vaccine_stock.vc_id = vaccination_centres.vc_id INNER JOIN vaccine_type ON vaccine_type.vaccine_id = vaccine_stock.vaccine_type WHERE vaccination_centres.vc_status = 'open' AND district.district_id = '{$districtId}' AND vaccine_stock.stock_date = '{$date}'";
+        $query = "SELECT * FROM vaccination_centres INNER JOIN pincode ON vaccination_centres.vc_pincode = pincode.pincode INNER JOIN district ON pincode.district_id = district.district_id INNER JOIN vaccine_stock ON vaccine_stock.vc_id = vaccination_centres.vc_id INNER JOIN vaccine_type ON vaccine_type.vaccine_id = vaccine_stock.vaccine_type WHERE vaccination_centres.vc_status = 'open' AND pincode.pincode = '{$pincode}' AND vaccine_stock.stock_date = '{$date}'";
 
         $getAllDetails = mysqli_query($connection,$query);
         if(mysqli_num_rows($getAllDetails)==0){
