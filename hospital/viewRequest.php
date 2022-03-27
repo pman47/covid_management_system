@@ -3,8 +3,8 @@
 <?php include('./includes/db.php'); ?>
 
 <?php
-    $testing_id = $_GET['testing_id'];
-    $query = "SELECT * FROM testing_requests INNER JOIN users ON users.user_id = testing_requests.user_id WHERE testing_id = $testing_id";
+    $patient_id = $_GET['patient_id'];
+    $query = "SELECT * FROM bed_requests INNER JOIN users ON users.user_id = bed_requests.user_id INNER JOIN ward_details ON ward_details.ward_id = bed_requests.ward_id WHERE patient_id = $patient_id";
     $getDetails = mysqli_query($connection,$query);
     while($row=mysqli_fetch_assoc($getDetails)){
         $user_name = $row['user_name'];
@@ -14,7 +14,11 @@
         $user_dob = $row['user_dob'];
         $user_gender = $row['user_gender'];
         $user_blood_group = $row['user_blood_group'];
-        $testing_status=$row['testing_status'];
+        $patient_status=$row['patient_status'];
+        $ward_id=$row['ward_id'];
+        $ward_name=$row['ward_name'];
+        $Total_beds=$row['Total_beds'];
+        $Available_beds=$row['Available_beds'];
     }
 ?>
 
@@ -22,11 +26,11 @@
         <div class="d-flex justify-content-between">
             <h3>User Details</h3>
             <?php
-                if($testing_status=="pending"){
+                if($patient_status=="pending"){
             ?>
             <div class="">
-                <a onClick="javascript: return confirm('Are You Sure?');" href="testingRequests.php?accept=<?php echo $testing_id;?>" class="btn btn-outline-primary rounded-pill px-4 mx-3">Accept</a>
-                <a onClick="javascript: return confirm('Are You Sure?');" href="testingRequests.php?reject=<?php echo $testing_id;?>" class="btn btn-outline-danger rounded-pill px-4">Reject</a>
+                <a onClick="javascript: return confirm('Are You Sure?');" href="bedRequests.php?accept=<?php echo $patient_id;?>" class="btn btn-outline-primary rounded-pill px-4 mx-3">Accept</a>
+                <a onClick="javascript: return confirm('Are You Sure?');" href="bedRequests.php?reject=<?php echo $patient_id;?>" class="btn btn-outline-danger rounded-pill px-4">Reject</a>
             </div>
             <?php } ?>
         </div>
@@ -70,41 +74,24 @@
     </div>
 
     <div class="container mt-4">
-        <h3>Testing Details</h3>
+        <h3>Requested For</h3>
         <div class="card mt-2 px-3 py-1 shadow">
             <div class="card-body row">
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Testing Name</th>
-                            <th scope="col">Testing Price</th>
+                            <th scope="col">Ward Name</th>
+                            <th scope="col">Total Beds</th>
+                            <th scope="col">Available Beds</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php
-                        $query = "SELECT * FROM testing_list INNER JOIN labs_testings ON labs_testings.LT_id = testing_list.LT_id WHERE testing_id = '{$testing_id}'";
-                        $allTestings = mysqli_query($connection,$query);
-                        $index = 1;
-                        $total = 0;
-                        while($row = mysqli_fetch_assoc($allTestings)){
-                            $testing_name = $row['testing_name'];
-                            $testing_price = $row['testing_price'];
-                            $total += $testing_price;
-                            ?>
-                            
-                            <tr>
-                                <th scope="row"><?php echo $index;?></th>
-                                <td><?php echo $testing_name;?></td>
-                                <td><?php echo $testing_price;?></td>
-                            </tr>
-                        <?php
-                        $index++;
-                        } ?>
+                    <tbody> 
                         <tr>
-                            <th scope="row">-</th>
-                            <th scope="row">TOTAL PRICE</th>
-                            <th scope="row"><?php echo $total;?>/-</th>
+                            <th scope="row">#</th>
+                            <td><?php echo $ward_name;?></td>
+                            <td><?php echo $Total_beds;?></td>
+                            <td><?php echo $Available_beds;?></td>
                         </tr>
                     </tbody>
                 </table>

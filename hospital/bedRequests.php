@@ -10,10 +10,25 @@
         if(!$accepted){
             die("QUERY FAILED " . mysqli_error($connection));
         }else{
-            echo '<script>
-            alert("Request Accepted");
-            window.location.href="bedRequests.php";
-            </script>';
+            $query = "SELECT * FROM bed_requests INNER JOIN ward_details ON ward_details.ward_id = bed_requests.ward_id WHERE patient_id = $patient_id";
+            $getWardId = mysqli_query($connection,$query);
+            while($row = mysqli_fetch_array($getWardId)){
+                $ward_id = $row['ward_id'];
+                $available_beds = $row['Available_beds'];
+            }
+
+            $available_beds-=1;
+
+            $query = "UPDATE ward_details SET Available_beds='{$available_beds}' WHERE ward_id = '{$ward_id}'";
+            $updateBed = mysqli_query($connection,$query);
+            if(!$updateBed){
+                die("QUERY FAILED " . mysqli_error($connection));
+            }else{
+                echo '<script>
+                alert("Request Accepted");
+                window.location.href="bedRequests.php";
+                </script>';
+            }
         }
     }
 
