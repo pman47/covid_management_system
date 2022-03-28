@@ -21,6 +21,7 @@
         if($username === $db_username && $password === $db_password){
             $_SESSION['user_role'] = "admin";
             echo '<script>
+            alert("Login Successfull");
             window.location.href="admin/index.php";
             </script>';
         }else{
