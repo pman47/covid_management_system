@@ -398,8 +398,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `password`, `user_name`, `user_aadhar_no`, `mobile_no`, `user_email`, `user_dob`, `user_gender`, `user_blood_group`, `aadhar_document_name`) VALUES
-(2, '1234', 'Prajapati Manish Ratilal', 240778050543, 9327760618, 'manishprajapatim416@gmail.com', '2002-07-13', 'Male', 'B+', '329065.jpg'),
-(3, '1234', 'Aniket Patel', 123456789123, 2407780505, 'aniketpatel123@gmail.com', '2003-12-02', 'Male', 'AB+', NULL),
+(2, '1234', 'Prajapati Manish Ratilal', 123443215678, 4554554545, 'manish6@gmail.com', '2002-07-13', 'Male', 'B+', '329065.jpg'),
+(3, '1234', 'Aniket Patel', 123456789123, 123456789012, 'aniket@gmail.com', '2003-12-02', 'Male', 'AB+', NULL),
 (6, '1234', 'Rahul Dave', 987698769876, 9876987676, 'rahuldave123@gmail.com', '2003-12-31', 'Male', 'AB+', NULL);
 
 -- --------------------------------------------------------
